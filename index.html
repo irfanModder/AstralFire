@@ -32,18 +32,15 @@
 
     <div class="loading-screen" id="loadingScreen">
         <div class="loader"></div>
-        <div class="loading-text">Hola <span id="loadingUsername">User</span></div>
-        <div class="loading-text">Welcome in website irfan</div>
-        <div class="loading-text">Good luck!</div>
+        <div class="loading-text" id="loadingText1">Hola <span id="loadingUsername">User</span></div>
+        <div class="loading-text" id="loadingText2">Welcome in website irfan</div>
+        <div class="loading-text" id="loadingText3">Good luck!</div>
     </div>
 
     <div class="dashboard" id="dashboard">
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <div class="logo">
-                    <i class="fas fa-code logo-icon"></i>
-                    <span class="menu-text">IrfanWebsite</span>
-                </div>
+                <div class="logo"><i class="fas fa-code logo-icon"></i><span class="menu-text">IrfanWebsite</span></div>
             </div>
             <ul class="sidebar-menu">
                 <li><a href="#" class="active" data-target="dashboardContent"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a></li>
@@ -71,10 +68,7 @@
             <div class="header">
                 <div class="user-info">
                     <div class="user-avatar" id="userAvatar">I</div>
-                    <div class="user-text">
-                        <h3 id="usernameDisplay">User</h3>
-                        <p>Welcome back!</p>
-                    </div>
+                    <div class="user-text"><h3 id="usernameDisplay">User</h3><p>Welcome back!</p></div>
                     <button class="sidebar-toggle-x" id="sidebarToggleX"><i class="fas fa-bars"></i></button>
                 </div>
                 <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -87,60 +81,83 @@
                 </div>
                 <div class="skills-section">
                     <h2 class="section-title">My Skills</h2>
-                    <div class="skills-container" id="skillsContainer">
+                    <div class="skills-container">
                         <div class="skill-item"><div class="skill-name"><span>Python</span><span>89%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 89%"></div></div></div>
                         <div class="skill-item"><div class="skill-name"><span>Javascript</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div></div>
                         <div class="skill-item"><div class="skill-name"><span>HTML</span><span>98%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 98%"></div></div></div>
+                        <div class="skill-item"><div class="skill-name"><span>CSS</span><span>89%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 89%"></div></div></div>
+                        <div class="skill-item"><div class="skill-name"><span>Lua</span><span>79%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 79%"></div></div></div>
+                        <div class="skill-item"><div class="skill-name"><span>C++</span><span>67%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 67%"></div></div></div>
                     </div>
                 </div>
-             </div>
+                <div class="trending-section">
+                    <h2 class="section-title">Trending</h2>
+                    <div class="trending-items">
+                        <div class="trending-item"><i class="fas fa-search"></i><h3>Tools Checker Pubg</h3></div>
+                        <div class="trending-item"><i class="fas fa-map"></i><h3>Desain Map</h3></div>
+                        <div class="trending-item"><i class="fas fa-cube"></i><h3>Blender 3D Roblox</h3></div>
+                        <div class="trending-item"><i class="fas fa-shield-alt"></i><h3>Ddos Tools</h3></div>
+                    </div>
+                </div>
+            </div>
 
-             <div class="dashboard-content" id="muridList">
+            <div class="dashboard-content" id="muridList">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Murid List</h2></div>
+                    <div class="content-header"><h2 class="content-title">Murid List</h2><p class="content-subtitle">Daftar kelas yang tersedia</p></div>
                     <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Murid Lua</h3><div class="price-tag">35k (permanen)</div></div>
+                        <div class="list-item"><h3 class="list-title">Murid Lua</h3><p>Benefit: Di ajarkan basic lua + logicnya, Remote event, Private 100%, Sampai bisa.</p><div class="price-tag">35k (permanen)</div></div>
+                        <div class="list-item"><h3 class="list-title">Murid Python + Javascript</h3><p>Benefit: Basic + logic, Framework, Tugas menarik, Private 100%.</p><div class="price-tag">50k</div></div>
                     </div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="buyTitle">
                 <div class="content-card">
-                    <div class="content-header">
-                        <h2 class="content-title">Buy Title</h2>
-                        <p class="content-subtitle">Pilih paket keanggotaan premium</p>
-                    </div>
+                    <div class="content-header"><h2 class="content-title">Buy Title</h2><p class="content-subtitle">Pilih paket keanggotaan premium</p></div>
                     <div class="buy-title-grid">
                         <div class="list-item">
-                            <div class="title-card-header">
-                                <i class="fas fa-award"></i>
-                                <h3 class="list-title">Premium</h3>
-                            </div>
-                            <div class="price-box">
-                                <p>1 Bulan = <span>15k</span></p>
-                                <p>Permanen = <span>35k</span></p>
-                            </div>
+                            <div class="title-flex"><i class="fas fa-award"></i><h3 class="list-title">Premium</h3></div>
+                            <div class="price-box-mini"><p>1 Bulan = 15k</p><p>Permanen = 35k</p></div>
                             <ul class="benefit-list">
-                                <li><i class="fas fa-check-circle"></i> Unlimited Limits ai</li>
-                                <li><i class="fas fa-check-circle"></i> Acces PhotoPack Premium</li>
+                                <li><i class="fas fa-check-circle"></i> Unlimited Limits ai (18+, Ai Animes)</li>
+                                <li><i class="fas fa-check-circle"></i> Can acces vm Ios</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock ai 18+ (No Age Verification)</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock Ai Animes (37 Ai)</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock RealTime Layout Chat ai</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock marketPlace Dark</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock 2 Models Ai generate app</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock Ai Maker chat</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock AstralAi (for chat can 18+)</li>
+                                <li><i class="fas fa-check-circle"></i> Acces PhotoPack cosplayer Premium</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Vscode Ui (Multi-Language)</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Tools premium (Checker ml, FF)</li>
                             </ul>
-                            <button class="login-btn" onclick="orderWA('Premium')">Pilih Premium</button>
+                            <button class="login-btn" onclick="window.open('https://wa.me/6282313154822?text=Halo%20bang%20mau%20beli%20Title%20Premium', '_blank')">Pilih Premium</button>
                         </div>
-                        <div class="list-item vip-card">
-                            <div class="title-card-header">
-                                <i class="fas fa-crown"></i>
-                                <h3 class="list-title">VIP</h3>
-                            </div>
-                            <div class="price-box vip">
-                                <p>1 Bulan = <span>35k</span></p>
-                                <p>Permanen = <span>50k</span></p>
-                            </div>
+                        <div class="list-item vip-border">
+                            <div class="title-flex"><i class="fas fa-crown" style="color:#FFD700"></i><h3 class="list-title">VIP</h3></div>
+                            <div class="price-box-mini vip-bg"><p>1 Bulan = 35k</p><p>Permanen = 50k</p></div>
                             <ul class="benefit-list">
                                 <li><i class="fas fa-star"></i> <b>Semua Benefit Premium +</b></li>
-                                <li><i class="fas fa-check-circle"></i> Unlock Dashboard Game Engine</li>
+                                <li><i class="fas fa-check-circle"></i> Unlimited Limits ai (All Types)</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock Ai Animes (57 Ai)</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Dashboard Game Engine</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Ai CharacterMaker</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Tools VIP (ML, CODM, FF, Tiktok)</li>
+                                <li><i class="fas fa-check-circle"></i> No Limits Verification</li>
                             </ul>
-                            <button class="login-btn vip-btn" onclick="orderWA('VIP')">Pilih VIP</button>
+                            <button class="login-btn" style="background:linear-gradient(to right, #2575fc, #6a11cb)" onclick="window.open('https://wa.me/6282313154822?text=Halo%20bang%20mau%20beli%20Title%20VIP', '_blank')">Pilih VIP</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="toolsSelling">
+                <div class="content-card">
+                    <h2 class="content-title">Tools Selling</h2>
+                    <div class="item-list">
+                        <div class="list-item"><h3 class="list-title">Tools Cracked Database</h3><div class="price-tag">35$</div></div>
+                        <div class="list-item"><h3 class="list-title">Tools MultiChecker</h3><div class="price-tag">267$</div></div>
                     </div>
                 </div>
             </div>
@@ -148,14 +165,33 @@
             <div class="dashboard-content" id="payment">
                 <div class="content-card">
                     <h2 class="content-title">Payment</h2>
-                    <button class="qris-btn" id="qrisBtn"><i class="fab fa-whatsapp"></i> Get QRIS</button>
+                    <div class="payment-method"><i class="fas fa-qrcode payment-icon"></i><div style="flex-grow:1;"><h3>QRIS</h3><button class="qris-btn" id="qrisBtn"><i class="fab fa-whatsapp"></i> Here</button></div></div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="astralDiamonds">
+                <div class="content-card">
+                    <h2 class="content-title">Astral Diamonds</h2>
+                    <div class="input-group"><label>Id Account:</label><input type="text" id="diamondId" placeholder="Example 72972973"></div>
+                    <div class="checkbox-group" id="promoList">
+                        <label><input type="checkbox" value="342 Diamonds = 43k"> 342 Diamonds = 43k</label>
+                        <label><input type="checkbox" value="752 Diamonds = 65k"> 752 Diamonds = 65k</label>
+                    </div>
+                    <button class="login-btn" id="orderDiamondBtn">Order</button>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="listOrder">
+                <div class="content-card">
+                    <h2 class="content-title">List Order</h2>
+                    <div id="orderItemsList"></div>
+                    <button class="login-btn" id="goBuyBtn">Go Buy</button>
                 </div>
             </div>
 
             <div class="footer"><p>© irfan 2026 Allright Reverse</p></div>
         </div>
     </div>
-
     <script src="main.js"></script>
 </body>
-</html>
+                                                   </html>
