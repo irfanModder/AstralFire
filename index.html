@@ -6,27 +6,836 @@
     <title>Irfan Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --sidebar-width: 250px;
+            --sidebar-collapsed: 0px;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .logo-login {
+            font-size: 2.5rem;
+            color: #6a11cb;
+            margin-bottom: 10px;
+        }
+
+        .login-title {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .login-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #6a11cb;
+            box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.3);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .login-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .dashboard {
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100%;
+            background: rgba(26, 26, 46, 0.97);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            transition: var(--transition);
+            z-index: 1000;
+            overflow-y: auto;
+            transform: translateX(0);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+            box-shadow: none;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .logo-icon {
+            color: #6a11cb;
+            font-size: 1.8rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(106, 17, 203, 0.2);
+            color: #fff;
+            border-left: 3px solid #6a11cb;
+        }
+
+        .sidebar-menu a.active {
+            background: rgba(106, 17, 203, 0.3);
+            color: #fff;
+            border-left: 3px solid #6a11cb;
+        }
+
+        .sidebar-menu i {
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+
+        .menu-text {
+            transition: var(--transition);
+            opacity: 1;
+            width: auto;
+        }
+
+        .main-content {
+            margin-left: 0;
+            padding: 20px;
+            transition: var(--transition);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .sidebar:not(.collapsed) + .main-content {
+            margin-left: var(--sidebar-width);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .user-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-toggle-x {
+            position: absolute;
+            left: 10px;
+            bottom: -35px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(106, 17, 203, 0.3);
+            z-index: 10;
+        }
+
+        .sidebar-toggle-x:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(106, 17, 203, 0.5);
+        }
+
+        .sidebar.collapsed ~ .main-content .sidebar-toggle-x {
+            display: flex;
+        }
+
+        .sidebar:not(.collapsed) ~ .main-content .sidebar-toggle-x {
+            display: none;
+        }
+
+        .logout-btn {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.4);
+        }
+
+        .dashboard-content {
+            display: none;
+        }
+
+        .dashboard-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-section {
+            background: linear-gradient(to right, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2));
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .welcome-section h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .skills-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #6a11cb;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #6a11cb;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            transition: width 1.5s ease;
+        }
+
+        .trending-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .trending-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .trending-item {
+            background: rgba(106, 17, 203, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(106, 17, 203, 0.2);
+        }
+
+        .trending-item:hover {
+            transform: translateY(-5px);
+            background: rgba(106, 17, 203, 0.2);
+            box-shadow: 0 10px 20px rgba(106, 17, 203, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .content-card {
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-title {
+            font-size: 1.8rem;
+            color: #6a11cb;
+        }
+
+        .content-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 5px;
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0c29, #302b63);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loading-screen.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #6a11cb;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textFade 0.5s forwards;
+        }
+
+        .loading-text:nth-child(2) {
+            animation-delay: 3s;
+        }
+
+        .loading-text:nth-child(3) {
+            animation-delay: 6s;
+        }
+
+        @keyframes textFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .item-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .list-item {
+            background: rgba(106, 17, 203, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #6a11cb;
+            transition: var(--transition);
+        }
+
+        .list-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(106, 17, 203, 0.2);
+        }
+
+        .list-title {
+            font-size: 1.3rem;
+            color: #6a11cb;
+            margin-bottom: 10px;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .rating-stars {
+            color: #FFD700;
+            margin: 10px 0;
+        }
+
+        .qris-btn {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qris-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid #6a11cb;
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            color: #6a11cb;
+        }
+
+        .server-spec {
+            background: rgba(106, 17, 203, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2575fc;
+        }
+
+        .server-title {
+            font-size: 1.4rem;
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+
+        .spec-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spec-icon {
+            color: #6a11cb;
+            width: 20px;
+        }
+
+        .info-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid #FFC107;
+        }
+
+        .info-title {
+            color: #FFC107;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stock-item {
+            background: rgba(106, 17, 203, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stock-count {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #6a11cb;
+            margin: 10px 0;
+        }
+
+        .source-img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .benefit-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .benefit-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .benefit-list li i {
+            color: #6a11cb;
+            margin-top: 4px;
+        }
+
+        .checkbox-group {
+            margin: 15px 0;
+        }
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 280px;
+            }
+            
+            .sidebar:not(.collapsed) + .main-content {
+                margin-left: 0;
+            }
+            
+            .sidebar:not(.collapsed) ~ .sidebar-overlay {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .login-box {
+                padding: 30px 20px;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            .sidebar-header {
+                padding: 20px;
+            }
+
+            .welcome-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .skills-container, .trending-items, .item-list {
+                grid-template-columns: 1fr;
+            }
+
+            .buy-title-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .sidebar-toggle-x {
+                left: 0;
+                bottom: -30px;
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .logout-btn {
+                align-self: flex-end;
+            }
+            
+            .stock-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(26, 26, 46, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #2575fc, #6a11cb);
+        }
+
+        .main-content {
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
 </head>
 <body>
     <div class="login-container" id="loginScreen">
         <div class="login-box">
-            <div class="logo-login"><i class="fas fa-code"></i></div>
+            <div class="logo-login">
+                <i class="fas fa-code"></i>
+            </div>
             <h1 class="login-title">IrfanWebsite</h1>
             <p class="login-subtitle">Login dulu brother v:</p>
+            
             <form id="loginForm">
                 <div class="input-group">
-                    <label for="usernameInput"><i class="fas fa-user"></i> Username</label>
-                    <input type="text" id="usernameInput" placeholder="Masukkan username" required="">
+                    <label for="username"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="usernameInput" placeholder="Masukkan username" required>
                 </div>
+                
                 <div class="input-group">
-                    <label for="passwordInput"><i class="fas fa-lock"></i> Password</label>
-                    <input type="password" id="passwordInput" placeholder="Masukkan password" required="">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="passwordInput" placeholder="Masukkan password" required>
                 </div>
-                <div class="error-message" id="errorMessage">Username dan password gak boleh kosong bang 🥰</div>
-                <button type="submit" class="login-btn" id="submitLogin"><i class="fas fa-sign-in-alt"></i> Login</button>
+                
+                <div class="error-message" id="errorMessage">
+                    Username dan password gak boleh kosong bang 🥰 
+                </div>
+                
+                <button type="submit" class="login-btn" id="submitLogin">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
             </form>
-            <p class="login-note"><i class="fas fa-info-circle"></i> username sama password acak juga boleh asal jgn kosong (:</p>
+            
+            <p class="login-note">
+                <i class="fas fa-info-circle"></i> username sama password acak juga boleh asal jgn kosong (:
+            </p>
         </div>
     </div>
 
@@ -75,9 +884,13 @@
                         <h3 id="usernameDisplay">User</h3>
                         <p>Welcome back!</p>
                     </div>
-                    <button class="sidebar-toggle-x" id="sidebarToggleX"><i class="fas fa-bars"></i></button>
+                    <button class="sidebar-toggle-x" id="sidebarToggleX">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
-                <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
             </div>
 
             <div class="dashboard-content active" id="dashboardContent">
@@ -88,7 +901,7 @@
 
                 <div class="skills-section">
                     <h2 class="section-title">My Skills</h2>
-                    <div class="skills-container" id="skillsContainer">
+                    <div class="skills-container">
                         <div class="skill-item"><div class="skill-name"><span>Python</span><span>89%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 89%"></div></div></div>
                         <div class="skill-item"><div class="skill-name"><span>Javascript</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div></div>
                         <div class="skill-item"><div class="skill-name"><span>HTML</span><span>98%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 98%"></div></div></div>
@@ -101,111 +914,126 @@
                 <div class="trending-section">
                     <h2 class="section-title">Trending</h2>
                     <div class="trending-items">
-                        <div class="trending-item"><i class="fas fa-search"></i><h3>Tools Checker Pubg</h3></div>
-                        <div class="trending-item"><i class="fas fa-map"></i><h3>Desain Map</h3></div>
-                        <div class="trending-item"><i class="fas fa-cube"></i><h3>Blender 3D Roblox</h3></div>
-                        <div class="trending-item"><i class="fas fa-shield-alt"></i><h3>Ddos Tools</h3></div>
+                        <div class="trending-item"><i class="fas fa-search" style="font-size: 2rem; margin-bottom: 10px; color: #6a11cb;"></i><h3>Tools Checker Pubg</h3></div>
+                        <div class="trending-item"><i class="fas fa-map" style="font-size: 2rem; margin-bottom: 10px; color: #6a11cb;"></i><h3>Desain Map</h3></div>
+                        <div class="trending-item"><i class="fas fa-cube" style="font-size: 2rem; margin-bottom: 10px; color: #6a11cb;"></i><h3>Blender 3D Roblox</h3></div>
+                        <div class="trending-item"><i class="fas fa-shield-alt" style="font-size: 2rem; margin-bottom: 10px; color: #6a11cb;"></i><h3>Ddos Tools</h3></div>
                     </div>
                 </div>
+
+                <div class="footer"><p>© irfan 2026 Allright Reverse</p></div>
             </div>
 
             <div class="dashboard-content" id="muridList">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Murid List</h2><p class="content-subtitle">Daftar kelas yang tersedia</p></div>
+                    <div class="content-header"><h2 class="content-title">Murid List</h2><p class="content-subtitle">Daftar kelas yang tersedia untuk belajar pemrograman</p></div>
                     <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Murid Lua</h3><p>Benefit: Di ajarkan basic lua + logicnya, Remote event, Private 100%, Sampai bisa.</p><div class="price-tag">35k (permanen)</div></div>
-                        <div class="list-item"><h3 class="list-title">Murid Python + Javascript</h3><p>Benefit: Basic + logic, Framework, Tugas menarik, Private 100%.</p><div class="price-tag">50k</div></div>
+                        <div class="list-item"><h3 class="list-title">Murid Lua</h3><p><strong>Benefit:</strong></p><ul style="margin-left:20px;margin-top:10px;"><li>Di ajarkan basic lua + logicnya</li><li>Di ajarkan semua remote event + Fungsi remote event</li><li>Belajar Private 100%</li><li>Di ajarkan sampai bener-bener bisa lua</li><li>Full ilmu penting + utama lua</li></ul><div class="price-tag">35k (permanen)</div></div>
+                        <div class="list-item"><h3 class="list-title">Murid Python + Javascript</h3><p><strong>Benefit:</strong></p><p><strong>Python:</strong></p><ul style="margin-left:20px;margin-top:5px;"><li>Di ajarkan basic + logic python</li><li>Di ajarkan semua ilmu python</li><li>Banyak soalnya + tugas seru pastinya</li><li>Murid private Privasi aman 100%</li><li>Dll Di ajarkan sampai bisa</li></ul><p style="margin-top:10px;"><strong>Javascript:</strong></p><ul style="margin-left:20px;margin-top:5px;"><li>Diajarkan basic + logic javascript</li><li>Di ajarkan semua framework javascript</li><li>Di ajarkan ilmu + ada tugas super menarik</li><li>Dan pastinya kelas private 100%</li></ul><div class="price-tag">50k</div><p style="margin-top:10px;font-size:0.9em;">Tenang hanya 50k Saja kamu sudah bisa itu</p></div>
                     </div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="toolsSelling">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Tools Selling</h2><p class="content-subtitle">Alat bantu pemrograman premium</p></div>
+                    <div class="content-header"><h2 class="content-title">Tools Selling</h2><p class="content-subtitle">Tools premium dengan kualitas terbaik</p></div>
                     <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Tools Cracked Database</h3><div class="price-tag">35$</div></div>
-                        <div class="list-item"><h3 class="list-title">Tools MultiChecker (ML, CODM, PUBG, FF)</h3><div class="price-tag">267$</div></div>
+                        <div class="list-item"><h3 class="list-title">Tools Cracked Database (TCD)</h3><p>Tools untuk melakukan crack database dengan metode terbaru</p><div class="price-tag">35$ / 538rb</div></div>
+                        <div class="list-item"><h3 class="list-title">Tools Sql Injection</h3><p>Tools untuk melakukan SQL injection dengan berbagai metode</p><div class="price-tag">120$ / 2jt</div></div>
+                        <div class="list-item"><h3 class="list-title">Tools Checker ML</h3><p>Tools untuk mengecek akun Mobile Legends dengan akurasi tinggi</p><div class="price-tag">60$ / 1.5jt</div></div>
+                        <div class="list-item"><h3 class="list-title">Tools MultiChecker</h3><p>Tools untuk mengecek akun ML, Tiktok, CODM, PUBG sekaligus</p><div class="price-tag">267$ / 4.5jt</div></div>
                     </div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="rateUser">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Rate User</h2><p class="content-subtitle">Penilaian pengguna setia kami</p></div>
+                    <div class="content-header"><h2 class="content-title">Rate User</h2><p class="content-subtitle">Testimoni dari pembeli dan murid yang sudah bergabung</p></div>
                     <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Irfan - Developer</h3><div class="price-tag"><i class="fas fa-star"></i> 5.0</div></div>
+                        <div class="list-item"><h3 class="list-title">Rating dari M*****</h3><div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p><strong>Pesan:</strong></p><p>"Website sangat keren dan responsive, harga terjangkau dan pelayanan cepat."</p></div>
+                        <div class="list-item"><h3 class="list-title">Rating dari R***</h3><div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p><strong>Pesan:</strong></p><p>"Murah banget bang suer deh ga nyesel beli disini, pelayanan cepat dan sangat dana pelajar makasih irfan."</p></div>
+                        <div class="list-item"><h3 class="list-title">Rating dari Fery*****</h3><div class="rating-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p><strong>Pesan:</strong></p><p>"Gacor banget bang murid luanya, saya belajar disini cuma 5 bulan sudah bisa lua + desain map, makasih bang sehat selalu auto langganan."</p></div>
                     </div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="comboList">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Combo List Price</h2><p class="content-subtitle">Daftar harga combo premium</p></div>
+                    <div class="content-header"><h2 class="content-title">Combo List Price</h2><p class="content-subtitle">Paket combo terbaik dengan harga spesial</p></div>
                     <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Combo List Mixed</h3><div class="price-tag">10k / 1k list</div></div>
+                        <div class="list-item"><h3 class="list-title">Combo ML (private ulp)</h3><ul style="margin-left:20px;"><li>1k line = 30k</li><li>2k line = 50k</li><li>3k line = 70k</li><li>5k line = 130k</li></ul></div>
+                        <div class="list-item"><h3 class="list-title">Combo Tiktok (private ulp)</h3><ul style="margin-left:20px;"><li>1k line = 40k</li><li>3k line = 120k</li><li>5k line = 180k</li></ul></div>
+                        <div class="list-item"><h3 class="list-title">Combo Codm (private tools)</h3><ul style="margin-left:20px;"><li>1k line = 70k</li><li>3k line = 210k</li></ul></div>
+                        <div class="list-item"><h3 class="list-title">Combo Pubg</h3><p><em>Coming Soon</em></p></div>
                     </div>
+                    <div class="info-box"><h3 class="info-title">Information:</h3><p>Untuk Yang codm dan tiktok mengapa mahal? Karena sangat lumayan sulit untuk mendapatkan nya jdi maklumin saja kawan (:</p></div>
+                    <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);"><p>© 2026 irfan Modder Website</p></div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="pembuatanMap">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Pembuatan Map</h2><p class="content-subtitle">Layanan jasa desain map game</p></div>
+                    <div class="content-header"><h2 class="content-title">Pembuatan Map Roblox</h2><p class="content-subtitle">Layanan pembuatan map Roblox custom dengan kualitas premium</p></div>
                     <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Map Tycoon (Roblox)</h3><div class="price-tag">120k</div></div>
-                        <div class="list-item"><h3 class="list-title">Map Simulator (Roblox)</h3><div class="price-tag">80k</div></div>
+                        <div class="list-item"><h3 class="list-title">Paket Basic Map</h3><p>Pembuatan map sederhana dengan detail minimal</p><div class="price-tag">Mulai dari 100k</div></div>
+                        <div class="list-item"><h3 class="list-title">Paket Premium Map</h3><p>Pembuatan map detail dengan scripting dan efek khusus</p><div class="price-tag">Mulai dari 500k</div></div>
+                        <div class="list-item"><h3 class="list-title">Paket Ultimate Map</h3><p>Pembuatan map lengkap dengan semua fitur premium dan optimization</p><div class="price-tag">Mulai dari 1.5jt</div></div>
                     </div>
+                    <div class="info-box"><h3 class="info-title">Note:</h3><p>Harga dapat berubah tergantung kompleksitas dan detail map yang diinginkan. Konsultasi gratis sebelum order!</p></div>
+                    <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);"><p>© 2026 Irfan Map Creator</p></div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="jasaPembuatanGame">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Jasa Pembuatan Game</h2><p class="content-subtitle">Kami buatkan game impianmu</p></div>
-                    <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Game Horror</h3><div class="price-tag">650k</div></div>
-                        <div class="list-item"><h3 class="list-title">Game Simulator</h3><div class="price-tag">450k</div></div>
-                    </div>
+                    <div class="content-header"><h2 class="content-title">Jasa Pembuatan Game</h2><p class="content-subtitle">Halo <span id="gameUsername">User</span>, ini dia layanan pembuatan game kami</p></div>
+                    <div class="server-spec"><h3 class="server-title">Pembuatan Map #1 (Terima Beres)</h3><div class="spec-item"><i class="fas fa-check-circle spec-icon"></i><span>Full map design + implementation</span></div><div class="spec-item"><i class="fas fa-check-circle spec-icon"></i><span>Scripting & game mechanics</span></div><div class="spec-item"><i class="fas fa-check-circle spec-icon"></i><span>Optimization & bug fixing</span></div><div class="spec-item"><i class="fas fa-check-circle spec-icon"></i><span>Full documentation</span></div><div class="price-tag">200k-3jt / 5$-95$ (USD)</div></div>
+                    <div class="server-spec"><h3 class="server-title">Pembuatan Map #2 (Map Only - No Blender Character)</h3><div class="spec-item"><i class="fas fa-check-circle spec-icon"></i><span>Map design only</span></div><div class="spec-item"><i class="fas fa-check-circle spec-icon"></i><span>Basic terrain & buildings</span></div><div class="spec-item"><i class="fas fa-check-circle spec-icon"></i><span>No character modeling</span></div><div class="spec-item"><i class="fas fa-check-circle spec-icon"></i><span>Basic lighting setup</span></div><div class="price-tag">100k-1.2jt / 3$-85$ (USD)</div></div>
+                    <div class="info-box"><h3 class="info-title">Information</h3><p><strong>IND:</strong> Sedikit info itu harga tergantung kesulitan mohon, di mengerti terima kasih!</p><p><strong>ENG:</strong> A little info the price depends on the difficulty, please understand thank you!</p></div>
+                    <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);"><p>© 2026 Alright Reverse</p></div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="serverList">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Server List</h2><p class="content-subtitle">Layanan sewa server berkualitas</p></div>
-                    <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">VPS 4GB RAM</h3><div class="price-tag">85k / Month</div></div>
-                    </div>
+                    <div class="content-header"><h2 class="content-title">Server List</h2><p class="content-subtitle">Hi, <span id="serverUsername">User</span> selamat datang di Server List tempat server game berkualitas tinggi</p></div>
+                    <div class="server-spec"><h3 class="server-title">Spek 1 - Gaming Server Pro</h3><div class="spec-item"><i class="fas fa-microchip spec-icon"></i><span><strong>Motherboard:</strong> MSI B650 Gaming Plus WiFi</span></div><div class="spec-item"><i class="fas fa-memory spec-icon"></i><span><strong>Ram:</strong> 64GB 2x32GB DDR5 6000MHz</span></div><div class="spec-item"><i class="fas fa-hdd spec-icon"></i><span><strong>Storage:</strong> 2TB NVMe SSD Gen5</span></div><div class="spec-item"><i class="fas fa-tv spec-icon"></i><span><strong>GPU:</strong> Nvidia GT 1030 2GB GDDR5</span></div><div class="spec-item"><i class="fas fa-plug spec-icon"></i><span><strong>PSU:</strong> FSP Vita GD 750W 80+ Gold</span></div><div class="spec-item"><i class="fas fa-snowflake spec-icon"></i><span><strong>Cooling:</strong> Deepcool AK620 Digital</span></div><div class="spec-item"><i class="fas fa-box spec-icon"></i><span><strong>Case:</strong> Montech Air 903 Base</span></div><div class="price-tag">26jt / 1.550,06 USD</div></div>
+                    <div class="server-spec"><h3 class="server-title">Spek 2 - Server Ultimate Edition</h3><div class="spec-item"><i class="fas fa-microchip spec-icon"></i><span><strong>Motherboard:</strong> ASUS Pro WS TRX50-SAGE WIFI</span></div><div class="spec-item"><i class="fas fa-memory spec-icon"></i><span><strong>Ram:</strong> 128GB 4x32GB DDR5 RDIMM ECC Registered</span></div><div class="spec-item"><i class="fas fa-hdd spec-icon"></i><span><strong>Storage:</strong> 2x 2TB NVMe Gen5 Raid 1 Plus 4TB NVMe Gen4</span></div><div class="spec-item"><i class="fas fa-tv spec-icon"></i><span><strong>GPU:</strong> NVIDIA RTX 5080 16GB</span></div><div class="spec-item"><i class="fas fa-plug spec-icon"></i><span><strong>PSU:</strong> Seasonic Prime PX-1300 1300W 80+ Platinum</span></div><div class="spec-item"><i class="fas fa-snowflake spec-icon"></i><span><strong>Cooling:</strong> Noctua NH-U14S TR4-SP3</span></div><div class="spec-item"><i class="fas fa-box spec-icon"></i><span><strong>Case:</strong> Fractal Design Meshify 2 XL</span></div><div class="price-tag">80jt / 4.769,43 USD</div></div>
+                    <div class="server-spec"><h3 class="server-title">Spek 3 - Budget Gaming Server</h3><div class="spec-item"><i class="fas fa-microchip spec-icon"></i><span><strong>Motherboard:</strong> MSI B650 Gaming Plus WiFi</span></div><div class="spec-item"><i class="fas fa-memory spec-icon"></i><span><strong>Ram:</strong> 32GB 2x16GB DDR5 5600MHz</span></div><div class="spec-item"><i class="fas fa-hdd spec-icon"></i><span><strong>Storage:</strong> 1TB NVMe SSD Gen4 Samsung 980 Pro</span></div><div class="spec-item"><i class="fas fa-tv spec-icon"></i><span><strong>GPU:</strong> Integrated Radeon Graphics</span></div><div class="spec-item"><i class="fas fa-plug spec-icon"></i><span><strong>PSU:</strong> Corsair CX650 650W 80+ Bronze</span></div><div class="spec-item"><i class="fas fa-snowflake spec-icon"></i><span><strong>Cooling:</strong> Deepcool AG400 Plus</span></div><div class="spec-item"><i class="fas fa-box spec-icon"></i><span><strong>Case:</strong> Montech Air 100 Lite</span></div><div class="price-tag">16jt (Only IDR no USD)</div></div>
+                    <div class="info-box"><h3 class="info-title">Information</h3><p><strong>IND:</strong> Sedikit info ini list harga ini untuk kami rakitkan ya kakak, Itu sudah di pilih oleh ahli profesional game 5 tahun dalam bidang server Jadi jangan ragu</p><p><strong>ENG:</strong> A little information, this price list is for us to assemble bro it has been selected by professional game experts with 5 years experience in the server field so don't hesitate</p></div>
+                    <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);"><p>© 2026 Alright Reverse</p></div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="nokosList">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Nokos List</h2><p class="content-subtitle">Nomor kosong untuk verifikasi</p></div>
-                    <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Nokos Indo</h3><div class="price-tag">3k / Number</div></div>
-                    </div>
+                    <div class="content-header"><h2 class="content-title">Nokos List</h2><p class="content-subtitle">Welcome kakak nokos list Silakan di pilih 👌</p></div>
+                    <div class="server-spec"><h3 class="server-title">Nokos IND</h3><div class="spec-item"><i class="fas fa-mobile-alt spec-icon"></i><span><strong>NokosBasic (No unlimited Verif):</strong> 6k</span></div><div class="spec-item"><i class="fas fa-mobile-alt spec-icon"></i><span><strong>NokosPremium (Unlimited Verif):</strong> 15k</span></div></div>
+                    <div class="server-spec"><h3 class="server-title">Nokos Japan</h3><div class="spec-item"><i class="fas fa-mobile-alt spec-icon"></i><span><strong>NokosBasic (No unlimited Verif):</strong> 19k</span></div><div class="spec-item"><i class="fas fa-mobile-alt spec-icon"></i><span><strong>NokosPremium (Unlimited Verif):</strong> 65k</span></div></div>
+                    <div style="margin-top:30px;"><h3 class="section-title">Stock List</h3><div class="stock-grid"><div class="stock-item"><h4>Nokos IND Basic</h4><div class="stock-count">35</div><p>Stock Tersedia</p></div><div class="stock-item"><h4>Nokos IND Premium</h4><div class="stock-count">2</div><p>Stock Tersedia</p></div><div class="stock-item"><h4>Nokos Japan Basic</h4><div class="stock-count">7</div><p>Stock Tersedia</p></div><div class="stock-item"><h4>Nokos Japan Premium</h4><div class="stock-count">1</div><p>Stock Tersedia</p></div></div></div>
+                    <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);"><p>© 2026 irfan Alright Reverse</p></div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="payment">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Payment</h2><p class="content-subtitle">Metode pembayaran aman</p></div>
-                    <div class="payment-method">
-                        <i class="fas fa-qrcode payment-icon"></i>
-                        <div style="flex-grow: 1;">
-                            <h3>QRIS</h3>
-                            <p>Otomatis terverifikasi</p>
-                        </div>
-                        <button class="qris-btn" id="qrisBtn"><i class="fab fa-whatsapp"></i> Get QRIS</button>
-                    </div>
+                    <div class="content-header"><h2 class="content-title">Payment Dashboard</h2><p class="content-subtitle">Metode pembayaran yang tersedia</p></div>
+                    <div class="payment-method"><i class="fab fa-cc-diners-club payment-icon"></i><div><h3>Dana</h3><p>0823-1315-4822</p></div></div>
+                    <div class="payment-method"><i class="fab fa-cc-visa payment-icon"></i><div><h3>Ovo</h3><p>0823-1315-4822</p></div></div>
+                    <div class="payment-method"><i class="fab fa-cc-mastercard payment-icon"></i><div><h3>Gopay</h3><p style="color: #ff6b6b;">Maintenance</p></div></div>
+                    <div class="payment-method"><i class="fas fa-qrcode payment-icon"></i><div style="flex-grow:1;"><h3>QRIS</h3><p>Klik tombol dibawah untuk mendapatkan QRIS via WhatsApp</p><button class="qris-btn" id="qrisBtn"><i class="fab fa-whatsapp"></i> Here</button></div></div>
+                    <div class="info-box"><h3 class="info-title">Note:</h3><p>Dilarang mempermainkan Payment karena logs payment akan masuk ke database. Tetapi tenang, aktivitas anda selain payment tidak akan masuk ke database dan sudah memakai encrypt data 3 Layer dan End to End.</p></div>
+                    <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);"><p>© 2026 Alright Reverse</p></div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="sourceCode">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Source Code</h2><p class="content-subtitle">Kumpulan kode sumber proyek</p></div>
-                    <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Website Portfolio</h3><div class="price-tag">Free</div></div>
-                        <div class="list-item"><h3 class="list-title">Discord Bot JS</h3><div class="price-tag">50k</div></div>
-                    </div>
+                    <div class="content-header"><h2 class="content-title">Source Code</h2><p class="content-subtitle">Hi <span id="srcUsername">User</span>, This A Free Source code free for you</p></div>
+                    <h3>Valentine Dashboard:</h3>
+                    <img src="https://img2.pixhost.to/images/5793/695861468_jarroffc.jpg" alt="Valentine Preview" class="source-img">
+                    <a href="https://www.mediafire.com/file/jocj1mtt4xgdbb5/Free.html/file" target="_blank"><button class="login-btn" style="width: auto;"><i class="fas fa-download"></i> Get Code</button></a>
+                    <div class="footer">©2026 irfanModder Allright Reversed</div>
                 </div>
             </div>
 
@@ -213,108 +1041,381 @@
                 <div class="content-card">
                     <div class="content-header">
                         <h2 class="content-title">Buy Title</h2>
-                        <p class="content-subtitle">Pilih paket keanggotaan premium</p>
+                        <p class="content-subtitle">Pilih paket keanggotaan premium untuk fitur maksimal</p>
                     </div>
-                    <div class="item-list">
-                        <div class="list-item" style="border-left: 4px solid var(--primary);">
-                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                                <i class="fas fa-award" style="font-size: 1.5rem; color: var(--primary);"></i>
-                                <h3 class="list-title">Premium</h3>
+                    <div class="buy-title-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        
+                        <div class="list-item" style="display: flex; flex-direction: column;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <i class="fas fa-award" style="font-size: 1.8rem; color: #6a11cb;"></i>
+                                <h3 class="list-title" style="margin-bottom: 0; font-size: 1.5rem;">Premium</h3>
                             </div>
-                            <div style="background: rgba(106, 17, 203, 0.1); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
-                                <p>1 Bulan = <span style="font-weight: 600; color: #6a11cb;">15k</span></p>
-                                <p>Permanen = <span style="font-weight: 600; color: #6a11cb;">35k</span></p>
+                            <div style="background: rgba(106, 17, 203, 0.2); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                                <p style="font-weight: 600; color: #fff;">1 Bulan = <span style="color: #6a11cb;">15k</span></p>
+                                <p style="font-weight: 600; color: #fff;">Permanen = <span style="color: #6a11cb;">35k</span></p>
                             </div>
-                            <ul style="list-style: none; margin-bottom: 20px;">
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Unlimited Limits ai (18+, Ai Animes)</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Can acces vm Ios</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Unlock ai 18+ (No Age Verification)</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Unlock Ai Animes (37 Ai)</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Unlock RealTime Layout Chat ai</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Unlock marketPlace Dark</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Unlock 2 Models Ai generate app</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Unlock Ai Maker chat</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Unlock AstralAi (for chat can 18+)</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Acces PhotoPack cosplayer Premium</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Acces Vscode Ui (Multi-Language)</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 8px;"></i> Acces Tools premium (Checker ml, FF)</li>
+                            <p style="font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">Benefit:</p>
+                            <ul class="benefit-list" style="flex-grow: 1;">
+                                <li><i class="fas fa-check-circle"></i> Unlimited Limits ai (18+, Ai Animes)</li>
+                                <li><i class="fas fa-check-circle"></i> Can acces vm Ios</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock ai 18+ (No Age Verification)</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock Ai Animes (37 Ai)</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock RealTime Layout Chat ai</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock marketPlace Dark</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock 2 Models Ai generate app</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock Ai Maker chat</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock AstralAi (for chat can 18+)</li>
+                                <li><i class="fas fa-check-circle"></i> Acces PhotoPack cosplayer Premium</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Vscode Ui (Multi-Language)</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Tools premium (Checker ml, FF)</li>
                             </ul>
                             <button class="login-btn" onclick="window.open('https://wa.me/6282313154822?text=Halo%20bang%20mau%20beli%20Title%20Premium', '_blank')">Pilih Premium</button>
                         </div>
-                        <div class="list-item" style="border-left: 4px solid var(--secondary); margin-top: 20px;">
-                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                                <i class="fas fa-crown" style="font-size: 1.5rem; color: #FFD700;"></i>
-                                <h3 class="list-title">VIP</h3>
+
+                        <div class="list-item" style="display: flex; flex-direction: column; border-left-color: #2575fc; border-image: linear-gradient(to bottom, #6a11cb, #2575fc) 1 100%;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <i class="fas fa-crown" style="font-size: 1.8rem; color: #FFD700;"></i>
+                                <h3 class="list-title" style="margin-bottom: 0; font-size: 1.5rem; color: #2575fc;">VIP</h3>
                             </div>
-                            <div style="background: rgba(37, 117, 252, 0.1); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
-                                <p>1 Bulan = <span style="font-weight: 600; color: #2575fc;">35k</span></p>
-                                <p>Permanen = <span style="font-weight: 600; color: #2575fc;">50k</span></p>
+                            <div style="background: rgba(37, 117, 252, 0.2); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                                <p style="font-weight: 600; color: #fff;">1 Bulan = <span style="color: #2575fc;">35k</span></p>
+                                <p style="font-weight: 600; color: #fff;">Permanen = <span style="color: #2575fc;">50k</span></p>
                             </div>
-                            <ul style="list-style: none; margin-bottom: 20px;">
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-star" style="color: #FFD700; margin-right: 8px;"></i> <b>Semua Benefit Premium +</b></li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 8px;"></i> Unlimited Limits ai (All Types)</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 8px;"></i> Unlock Ai Animes (57 Ai)</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 8px;"></i> Acces Dashboard Game Engine</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 8px;"></i> Acces Ai CharacterMaker</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 8px;"></i> Acces Tools VIP (ML, CODM, FF, Tiktok)</li>
-                                <li style="font-size: 0.85rem; margin-bottom: 5px;"><i class="fas fa-check-circle" style="color: var(--secondary); margin-right: 8px;"></i> No Limits Verification</li>
+                            <p style="font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px;">Benefit:</p>
+                            <ul class="benefit-list" style="flex-grow: 1;">
+                                <li><i class="fas fa-star"></i> <b>Semua Benefit Premium +</b></li>
+                                <li><i class="fas fa-check-circle"></i> Unlimited Limits ai (All Types)</li>
+                                <li><i class="fas fa-check-circle"></i> Unlock Ai Animes (57 Ai)</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Dashboard Game Engine</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Ai CharacterMaker</li>
+                                <li><i class="fas fa-check-circle"></i> Acces Tools VIP (ML, CODM, FF, Tiktok)</li>
+                                <li><i class="fas fa-check-circle"></i> No Limits Verification</li>
                             </ul>
-                            <button class="login-btn" style="background: linear-gradient(to right, #2575fc, #6a11cb)" onclick="window.open('https://wa.me/6282313154822?text=Halo%20bang%20mau%20beli%20Title%20VIP', '_blank')">Pilih VIP</button>
+                            <button class="login-btn" style="background: linear-gradient(to right, #2575fc, #6a11cb);" onclick="window.open('https://wa.me/6282313154822?text=Halo%20bang%20mau%20beli%20Title%20VIP', '_blank')">Pilih VIP</button>
                         </div>
+
                     </div>
+                    <div class="footer">©2026 irfanModder Allright Reversed</div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="astralDiamonds">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Astral Diamonds</h2><p class="content-subtitle">Top up mata uang virtual</p></div>
-                    <div class="input-group">
-                        <label>Id Account:</label>
-                        <input type="text" id="diamondId" placeholder="Example 72972973">
+                    <div class="content-header"><h2 class="content-title">Astral Diamonds</h2><p class="content-subtitle">Isi data dengan benar</p></div>
+                    <div class="payment-method" style="flex-direction: column; align-items: flex-start;">
+                        <div><strong>Id:</strong> <input type="text" id="diamondId" placeholder="Example 72972973" style="background:rgba(0,0,0,0.3); border:1px solid #6a11cb; padding:8px; border-radius:5px; color:white; width:100%;"></div>
+                        <div style="margin-top:10px;"><strong>CardAccount:</strong> <input type="text" id="diamondCard" placeholder="Example 782-Astral" style="background:rgba(0,0,0,0.3); border:1px solid #6a11cb; padding:8px; border-radius:5px; color:white; width:100%;"></div>
                     </div>
+                    <div class="info-box"><p><strong>ENG:</strong> If the account ID/account card is wrong, the diamonds will not be entered. Please do not make a mistake.</p><p><strong>IND:</strong> Kalo id akun/kartu akun salah diamond tidak akan masuk mohon tidak salah.</p></div>
+                    <h3 class="section-title">Diamond Promotion</h3>
                     <div class="checkbox-group" id="promoList">
-                        <label><input type="checkbox" value="342 Diamonds = 43k"> 342 Diamonds = 43k</label>
-                        <label><input type="checkbox" value="752 Diamonds = 65k"> 752 Diamonds = 65k</label>
-                        <label><input type="checkbox" value="1052 Diamonds = 115k"> 1052 Diamonds = 115k</label>
-                        <label><input type="checkbox" value="2052 Diamonds = 215k"> 2052 Diamonds = 215k</label>
-                        <label><input type="checkbox" value="Weekly pass Diamonds = 28k"> Weekly pass Diamonds = 28k</label>
+                        <label><input type="checkbox" name="diamond" value="342 Diamonds = 43k/5 3$"> 342 Diamonds = 43k/5 3$</label>
+                        <label><input type="checkbox" name="diamond" value="752 Diamonds = 65k/10$"> 752 Diamonds = 65k/10$</label>
+                        <label><input type="checkbox" name="diamond" value="927 Diamonds = 92.3k/17$"> 927 Diamonds = 92.3k/17$</label>
+                        <label><input type="checkbox" name="diamond" value="2358 Diamonds = 210k/13,45$"> 2358 Diamonds = 210k/13,45$</label>
                     </div>
-                    <button class="login-btn" id="orderDiamondBtn">Order</button>
+                    <h3 class="section-title">Normal Diamonds</h3>
+                    <div class="checkbox-group" id="normalList">
+                        <label><input type="checkbox" name="diamond" value="75 Diamonds = 7k"> 75 Diamonds = 7k</label>
+                        <label><input type="checkbox" name="diamond" value="95 Diamonds = 15k"> 95 Diamonds = 15k</label>
+                        <label><input type="checkbox" name="diamond" value="157 Diamonds = 27k"> 157 Diamonds = 27k</label>
+                        <label><input type="checkbox" name="diamond" value="291 Diamonds = 32.6k"> 291 Diamonds = 32.6k</label>
+                        <label><input type="checkbox" name="diamond" value="445 Diamonds = 50k"> 445 Diamonds = 50k</label>
+                        <label><input type="checkbox" name="diamond" value="682 Diamonds = 61k"> 682 Diamonds = 61k</label>
+                        <label><input type="checkbox" name="diamond" value="891 Diamonds = 87.9k"> 891 Diamonds = 87.9k</label>
+                        <label><input type="checkbox" name="diamond" value="1072 Diamonds = 120k"> 1072 Diamonds = 120k</label>
+                    </div>
+                    <div class="info-box"><p><strong>Info Transaction:</strong> Proses Instant, Diamonds Auto Masuk, Pajak Murah</p></div>
+                    <button class="login-btn" id="orderDiamondBtn" style="width:200px;"><i class="fas fa-shopping-cart"></i> Order</button>
                 </div>
             </div>
 
             <div class="dashboard-content" id="informationUpdate">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Information Update</h2><p class="content-subtitle">Berita terbaru website</p></div>
-                    <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Update v2.1</h3><p>Penambahan fitur AI Generate.</p></div>
+                    <div class="content-header"><h2 class="content-title">Information Update</h2></div>
+                    <div class="server-spec">
+                        <h3 class="server-title">Next update: [ Update in 17 Juli ]</h3>
+                        <ul style="margin-left:20px;"><li>-New Ai ( alya FixLag)</li><li>-NewChar ( Kaitras )</li><li>-Fix bug vm ( Virtual Machine )</li><li>-Fix Dashboard BugOrders</li><li>-Fix Bugs Mikasa Skils Ultimate</li></ul>
+                        <p style="margin-top:10px;">© Astral Fire 2026 Allright Reversed</p>
                     </div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="astralFireUtils">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">Astral Fire Utils</h2><p class="content-subtitle">Kumpulan tools pembantu</p></div>
-                    <div class="item-list">
-                        <div class="list-item"><h3 class="list-title">Log Cleaner</h3><div class="price-tag">Free</div></div>
-                    </div>
+                    <div class="content-header"><h2 class="content-title">Astral Fire Utils</h2><p class="content-subtitle">Hai <span id="utilsUsername">User</span>, This a Dashboard RealTime Database Astral Fire</p></div>
+                    <div class="server-spec"><pre style="font-family: 'Poppins', monospace; background: rgba(0,0,0,0.3); padding:15px; border-radius:10px;">
+================
+Online users: 78
+Pc users: 47
+Androids: 37
+Ios: 0
+=================
+Total Game Revenue: 271$/Day
+Ai Totals: 87 
+Total  Chat-Ai Use: 32 Users ( now ) 
+Totals Ai-18+ Use: 7 Users ( now ) 
+Totals Vm Use: 0 
+Totals Ai-Appgenerate Use: 2 Users ( now ) 
+Totals AiBoosterFps Use: 2 ( Android ) 
+Totals Dashboard RealTime Watch Use: 3 ( Android, Windows ) 
+Totals CommandPromtGames Use: 5 ( Windows )
+                    </pre></div>
                 </div>
             </div>
 
             <div class="dashboard-content" id="listOrder">
                 <div class="content-card">
-                    <div class="content-header"><h2 class="content-title">List Order</h2><p class="content-subtitle">Pesanan yang kamu pilih</p></div>
-                    <div id="orderItemsList">
-                        <p style="text-align: center; color: rgba(255,255,255,0.5); padding: 20px;">Belum ada pesanan</p>
-                    </div>
-                    <button class="login-btn" id="goBuyBtn" style="margin-top: 20px; display: none;">Go Buy</button>
+                    <div class="content-header"><h2 class="content-title">List Order</h2><p class="content-subtitle">Item yang dipilih akan muncul di sini</p></div>
+                    <div id="orderItemsList" class="item-list"></div>
+                    <button class="login-btn" id="goBuyBtn" style="margin-top:20px;"><i class="fab fa-whatsapp"></i> Go buy</button>
                 </div>
             </div>
-
-            <div class="footer"><p>© irfan 2026 Allright Reverse</p></div>
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <script>
+        
+        const loginScreen = document.getElementById('loginScreen');
+        const dashboard = document.getElementById('dashboard');
+        const loginForm = document.getElementById('loginForm');
+        const usernameInput = document.getElementById('usernameInput');
+        const passwordInput = document.getElementById('passwordInput');
+        const errorMessage = document.getElementById('errorMessage');
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingUsername = document.getElementById('loadingUsername');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarToggleX = document.getElementById('sidebarToggleX');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        const welcomeUsername = document.getElementById('welcomeUsername');
+        const userAvatar = document.getElementById('userAvatar');
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+        const dashboardContents = document.querySelectorAll('.dashboard-content');
+        const mainContent = document.getElementById('mainContent');
+        const srcUsername = document.getElementById('srcUsername');
+        const utilsUsername = document.getElementById('utilsUsername');
+        const gameUsername = document.getElementById('gameUsername');
+        const serverUsername = document.getElementById('serverUsername');
+        
+        let loggedInUsername = '';
+
+        
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            if (username === '' || password === '') {
+                errorMessage.textContent = 'Username dan password tidak boleh kosong!';
+                errorMessage.style.display = 'block';
+                loginForm.classList.add('shake');
+                setTimeout(() => loginForm.classList.remove('shake'), 500);
+                return;
+            }
+            loggedInUsername = username;
+            loadingScreen.classList.add('active');
+            loadingUsername.textContent = loggedInUsername;
+            errorMessage.style.display = 'none';
+            
+            setTimeout(() => {
+                loadingScreen.classList.remove('active');
+                loginScreen.style.display = 'none';
+                dashboard.style.display = 'block';
+                
+                usernameDisplay.textContent = loggedInUsername;
+                welcomeUsername.textContent = loggedInUsername;
+                userAvatar.textContent = loggedInUsername.charAt(0).toUpperCase();
+                if (srcUsername) srcUsername.textContent = loggedInUsername;
+                if (utilsUsername) utilsUsername.textContent = loggedInUsername;
+                if (gameUsername) gameUsername.textContent = loggedInUsername;
+                if (serverUsername) serverUsername.textContent = loggedInUsername;
+                
+                showNotification(`Selamat datang ${loggedInUsername}!`);
+                initDashboard();
+            }, 10000);
+        });
+
+        
+        logoutBtn.addEventListener('click', () => {
+            dashboard.style.display = 'none';
+            loginScreen.style.display = 'flex';
+            usernameInput.value = '';
+            passwordInput.value = '';
+            showNotification('Berhasil logout! Sampai jumpa lagi!');
+            sidebar.classList.add('collapsed');
+            sidebarOverlay.classList.remove('active');
+            sidebarToggleX.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+
+        
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('#qrisBtn')) {
+                const phoneNumber = '6282313154822';
+                const message = encodeURIComponent('Halo mas Minta qris dong');
+                window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+            }
+        });
+
+        
+        const orderBtn = document.getElementById('orderDiamondBtn');
+        if (orderBtn) {
+            orderBtn.addEventListener('click', function() {
+                const checkboxes = document.querySelectorAll('#promoList input[type="checkbox"]:checked, #normalList input[type="checkbox"]:checked');
+                const selectedItems = [];
+                checkboxes.forEach(cb => selectedItems.push(cb.value));
+                if (selectedItems.length === 0) {
+                    alert('Pilih minimal satu item diamond.');
+                    return;
+                }
+                localStorage.setItem('selectedOrderItems', JSON.stringify(selectedItems));
+                const listOrderLink = Array.from(sidebarLinks).find(link => link.getAttribute('data-target') === 'listOrder');
+                if (listOrderLink) listOrderLink.click();
+                renderOrderList();
+            });
+        }
+
+        
+        function renderOrderList() {
+            const container = document.getElementById('orderItemsList');
+            if (!container) return;
+            const items = JSON.parse(localStorage.getItem('selectedOrderItems') || '[]');
+            if (items.length === 0) {
+                container.innerHTML = '<p>Tidak ada item dipilih.</p>';
+                return;
+            }
+            let html = '';
+            items.forEach(item => {
+                html += `<div class="list-item"><h3 class="list-title">${item}</h3></div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'goBuyBtn' || e.target.closest('#goBuyBtn')) {
+                const items = JSON.parse(localStorage.getItem('selectedOrderItems') || '[]');
+                if (items.length === 0) {
+                    alert('Tidak ada item di List Order.');
+                    return;
+                }
+                const itemList = items.join(', ');
+                const phone = '6282313154822';
+                const message = encodeURIComponent(`Halo bang gw mau beli ${itemList} dong`);
+                window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            }
+        });
+
+       
+        function initDashboard() {
+            sidebarToggleX.addEventListener('click', () => {
+                if (sidebar.classList.contains('collapsed')) {
+                    sidebar.classList.remove('collapsed');
+                    sidebarOverlay.classList.add('active');
+                }
+            });
+            
+            sidebarOverlay.addEventListener('click', () => {
+                sidebar.classList.add('collapsed');
+                sidebarOverlay.classList.remove('active');
+            });
+            
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    sidebarLinks.forEach(item => item.classList.remove('active'));
+                    link.classList.add('active');
+                    const targetId = link.getAttribute('data-target');
+                    dashboardContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    if (targetId === 'listOrder') renderOrderList();
+                    
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.add('collapsed');
+                        sidebarOverlay.classList.remove('active');
+                    }
+                });
+            });
+            
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => { bar.style.width = width; }, 300);
+            });
+            
+            setupSwipeToClose();
+        }
+
+        function setupSwipeToClose() {
+            mainContent.addEventListener('click', (e) => {
+                if (!sidebar.classList.contains('collapsed') && window.innerWidth > 768) {
+                    if (!e.target.closest('.sidebar-toggle-x')) {
+                        sidebar.classList.add('collapsed');
+                        sidebarOverlay.classList.remove('active');
+                    }
+                }
+            });
+            
+            let startX = 0, currentX = 0, isSwiping = false;
+            mainContent.addEventListener('touchstart', (e) => {
+                if (!sidebar.classList.contains('collapsed')) {
+                    startX = e.touches[0].clientX;
+                    isSwiping = true;
+                }
+            });
+            mainContent.addEventListener('touchmove', (e) => {
+                if (!isSwiping || sidebar.classList.contains('collapsed')) return;
+                currentX = e.touches[0].clientX;
+                const diff = startX - currentX;
+                if (diff > 50) {
+                    sidebar.classList.add('collapsed');
+                    sidebarOverlay.classList.remove('active');
+                    isSwiping = false;
+                }
+            });
+            mainContent.addEventListener('touchend', () => { isSwiping = false; });
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(to right, #6a11cb, #2575fc);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                z-index: 9999;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+            `;
+            notification.textContent = message;
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+                @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+            `;
+            document.head.appendChild(style);
+            document.body.appendChild(notification);
+            setTimeout(() => { notification.remove(); style.remove(); }, 3000);
+        }
+
+        
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+            .shake { animation: shake 0.5s ease-in-out; }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
-        </html>
+    </html>
