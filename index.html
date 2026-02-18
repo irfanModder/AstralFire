@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irfan Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <div class="logo-login"><i class="fas fa-code"></i></div>
+            <h1 class="login-title">IrfanWebsite</h1>
+            <p class="login-subtitle">Login dulu brother v:</p>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="usernameInput"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="usernameInput" placeholder="Masukkan username" required>
+                </div>
+                <div class="input-group">
+                    <label for="passwordInput"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="passwordInput" placeholder="Masukkan password" required>
+                </div>
+                <div class="error-message" id="errorMessage">Username dan password gak boleh kosong bang 🥰</div>
+                <button type="submit" class="login-btn" id="submitLogin"><i class="fas fa-sign-in-alt"></i> Login</button>
+            </form>
+            <p class="login-note"><i class="fas fa-info-circle"></i> username sama password acak juga boleh asal jgn kosong (:</p>
+        </div>
+    </div>
+
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <div class="loading-text">Hola <span id="loadingUsername">User</span></div>
+        <div class="loading-text">Welcome in website irfan</div>
+        <div class="loading-text">Good luck!</div>
+    </div>
+
+    <div class="dashboard" id="dashboard">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-code logo-icon"></i>
+                    <span class="menu-text">IrfanWebsite</span>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" data-target="dashboardContent"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a></li>
+                <li><a href="#" data-target="muridList"><i class="fas fa-users"></i><span class="menu-text">Murid List</span></a></li>
+                <li><a href="#" data-target="toolsSelling"><i class="fas fa-tools"></i><span class="menu-text">Tools Selling</span></a></li>
+                <li><a href="#" data-target="rateUser"><i class="fas fa-star"></i><span class="menu-text">Rate User</span></a></li>
+                <li><a href="#" data-target="comboList"><i class="fas fa-gem"></i><span class="menu-text">Combo List Price</span></a></li>
+                <li><a href="#" data-target="pembuatanMap"><i class="fas fa-map"></i><span class="menu-text">Pembuatan Map</span></a></li>
+                <li><a href="#" data-target="jasaPembuatanGame"><i class="fas fa-gamepad"></i><span class="menu-text">Jasa Pembuatan Game</span></a></li>
+                <li><a href="#" data-target="serverList"><i class="fas fa-server"></i><span class="menu-text">Server List</span></a></li>
+                <li><a href="#" data-target="nokosList"><i class="fas fa-list"></i><span class="menu-text">Nokos List</span></a></li>
+                <li><a href="#" data-target="payment"><i class="fas fa-credit-card"></i><span class="menu-text">Payment</span></a></li>
+                <li><a href="#" data-target="sourceCode"><i class="fas fa-code"></i><span class="menu-text">Source Code</span></a></li>
+                <li><a href="#" data-target="buyTitle"><i class="fas fa-crown"></i><span class="menu-text">Buy Title</span></a></li>
+                <li><a href="#" data-target="astralDiamonds"><i class="fas fa-gem"></i><span class="menu-text">Astral Diamonds</span></a></li>
+                <li><a href="#" data-target="informationUpdate"><i class="fas fa-info-circle"></i><span class="menu-text">Information Update</span></a></li>
+                <li><a href="#" data-target="astralFireUtils"><i class="fas fa-fire"></i><span class="menu-text">Astral Fire Utils</span></a></li>
+                <li><a href="#" data-target="listOrder"><i class="fas fa-shopping-cart"></i><span class="menu-text">List Order</span></a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <div class="main-content" id="mainContent">
+            <div class="header">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">I</div>
+                    <div class="user-text">
+                        <h3 id="usernameDisplay">User</h3>
+                        <p>Welcome back!</p>
+                    </div>
+                    <button class="sidebar-toggle-x" id="sidebarToggleX"><i class="fas fa-bars"></i></button>
+                </div>
+                <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+
+            <div class="dashboard-content active" id="dashboardContent">
+                <div class="welcome-section">
+                    <h1>Hi <span id="welcomeUsername">User</span>, selamat datang di irfanWebsite selamat belanja 👌</h1>
+                    <p>Tempat terbaik untuk belajar pemrograman dan mendapatkan tools premium</p>
+                </div>
+                <div class="skills-section">
+                    <h2 class="section-title">My Skills</h2>
+                    <div class="skills-container" id="skillsContainer">
+                        <div class="skill-item"><div class="skill-name"><span>Python</span><span>89%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 89%"></div></div></div>
+                        <div class="skill-item"><div class="skill-name"><span>Javascript</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div></div>
+                        <div class="skill-item"><div class="skill-name"><span>HTML</span><span>98%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 98%"></div></div></div>
+                    </div>
+                </div>
+             </div>
+
+             <div class="dashboard-content" id="muridList">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Murid List</h2></div>
+                    <div class="item-list">
+                        <div class="list-item"><h3 class="list-title">Murid Lua</h3><div class="price-tag">35k (permanen)</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="buyTitle">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Buy Title</h2>
+                        <p class="content-subtitle">Pilih paket keanggotaan premium</p>
+                    </div>
+                    <div class="buy-title-grid">
+                        <div class="list-item">
+                            <div class="title-card-header">
+                                <i class="fas fa-award"></i>
+                                <h3 class="list-title">Premium</h3>
+                            </div>
+                            <div class="price-box">
+                                <p>1 Bulan = <span>15k</span></p>
+                                <p>Permanen = <span>35k</span></p>
+                            </div>
+                            <ul class="benefit-list">
+                                <li><i class="fas fa-check-circle"></i> Unlimited Limits ai</li>
+                                <li><i class="fas fa-check-circle"></i> Acces PhotoPack Premium</li>
+                            </ul>
+                            <button class="login-btn" onclick="orderWA('Premium')">Pilih Premium</button>
+                        </div>
+                        <div class="list-item vip-card">
+                            <div class="title-card-header">
+                                <i class="fas fa-crown"></i>
+                                <h3 class="list-title">VIP</h3>
+                            </div>
+                            <div class="price-box vip">
+                                <p>1 Bulan = <span>35k</span></p>
+                                <p>Permanen = <span>50k</span></p>
+                            </div>
+                            <ul class="benefit-list">
+                                <li><i class="fas fa-star"></i> <b>Semua Benefit Premium +</b></li>
+                                <li><i class="fas fa-check-circle"></i> Unlock Dashboard Game Engine</li>
+                            </ul>
+                            <button class="login-btn vip-btn" onclick="orderWA('VIP')">Pilih VIP</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="payment">
+                <div class="content-card">
+                    <h2 class="content-title">Payment</h2>
+                    <button class="qris-btn" id="qrisBtn"><i class="fab fa-whatsapp"></i> Get QRIS</button>
+                </div>
+            </div>
+
+            <div class="footer"><p>© irfan 2026 Allright Reverse</p></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
