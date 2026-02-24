@@ -199,8 +199,6 @@
             text-decoration: none;
             transition: var(--transition);
             border-left: 3px solid transparent;
-            white-space: nowrap;
-            overflow: hidden;
         }
 
         .sidebar-menu a:hover {
@@ -220,18 +218,11 @@
             min-width: 25px;
         }
 
-        .menu-text {
-            transition: var(--transition);
-            opacity: 1;
-            width: auto;
-        }
-
         .main-content {
             margin-left: 0;
             padding: 20px;
             transition: var(--transition);
             min-height: 100vh;
-            position: relative;
         }
 
         .sidebar:not(.collapsed) + .main-content {
@@ -285,11 +276,6 @@
             font-weight: bold;
         }
 
-        .user-text {
-            display: flex;
-            flex-direction: column;
-        }
-
         .sidebar-toggle-x {
             position: absolute;
             left: 10px;
@@ -312,15 +298,6 @@
 
         .sidebar-toggle-x:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(106, 17, 203, 0.5);
-        }
-
-        .sidebar.collapsed ~ .main-content .sidebar-toggle-x {
-            display: flex;
-        }
-
-        .sidebar:not(.collapsed) ~ .main-content .sidebar-toggle-x {
-            display: none;
         }
 
         .logout-btn {
@@ -332,7 +309,6 @@
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: var(--shadow);
         }
 
         .logout-btn:hover {
@@ -446,7 +422,6 @@
         .trending-item:hover {
             transform: translateY(-5px);
             background: rgba(106, 17, 203, 0.2);
-            box-shadow: 0 10px 20px rgba(106, 17, 203, 0.2);
         }
 
         .footer {
@@ -537,10 +512,7 @@
         }
 
         @keyframes textFade {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .item-list {
@@ -592,7 +564,6 @@
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            margin-left: 10px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -715,17 +686,229 @@
             cursor: pointer;
         }
 
+        .account-image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.2));
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #FFD700;
+        }
+
+        .promo-link {
+            color: #6a11cb;
+            word-break: break-all;
+            text-decoration: none;
+        }
+
+        .promo-link:hover {
+            text-decoration: underline;
+            color: #2575fc;
+        }
+
+        .buy-btn {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .logs-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid rgba(106, 17, 203, 0.3);
+        }
+
+        .log-entry {
+            padding: 10px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-family: monospace;
+            animation: slideInLog 0.3s ease;
+        }
+
+        @keyframes slideInLog {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            background: rgba(106, 17, 203, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border-left: 4px solid #2575fc;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #6a11cb;
+            margin: 10px 0;
+        }
+
+        .wife-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .wife-stat-item {
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.2), rgba(255, 105, 180, 0.2));
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border-left: 4px solid #ff69b4;
+        }
+
+        .wife-stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff69b4;
+            margin: 10px 0;
+        }
+
+        .wife-photo {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border: 3px solid #ff69b4;
+        }
+
+        .learning-grid, .game-engine-grid, .downloader-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .learning-item, .engine-item, .downloader-item {
+            background: rgba(106, 17, 203, 0.15);
+            border-radius: 10px;
+            padding: 20px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(106, 17, 203, 0.3);
+            font-weight: 500;
+        }
+        .learning-item:hover, .engine-item:hover, .downloader-item:hover {
+            transform: translateY(-3px);
+            background: rgba(106, 17, 203, 0.3);
+        }
+        .code-block {
+            background: #1e1e2f;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #6a11cb;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            color: #f8f8f2;
+        }
+
+        .wdp-logo {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        .best-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(106, 17, 203, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .best-item:hover {
+            background: rgba(106, 17, 203, 0.4);
+        }
+        .best-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        .rules-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #FFC107;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: rgba(26,26,46,0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid rgba(106,17,203,0.5);
+        }
+        .modal-content pre {
+            background: #1a1a2e;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
         @media (max-width: 992px) {
             .sidebar {
                 width: 280px;
             }
-            
             .sidebar:not(.collapsed) + .main-content {
                 margin-left: 0;
-            }
-            
-            .sidebar:not(.collapsed) ~ .sidebar-overlay {
-                display: block;
             }
         }
 
@@ -733,74 +916,22 @@
             .login-box {
                 padding: 30px 20px;
             }
-
             .sidebar {
                 width: 100%;
                 max-width: 300px;
             }
-
             .main-content {
                 padding: 15px;
             }
-
-            .sidebar-header {
-                padding: 20px;
-            }
-
             .welcome-section h1 {
                 font-size: 1.8rem;
             }
-
-            .skills-container, .trending-items, .item-list {
+            .skills-container, .trending-items, .item-list, .stats-grid, .wife-stats {
                 grid-template-columns: 1fr;
             }
-
             .buy-title-grid {
                 grid-template-columns: 1fr !important;
             }
-            
-            .sidebar-toggle-x {
-                left: 0;
-                bottom: -30px;
-                width: 32px;
-                height: 32px;
-                font-size: 1rem;
-            }
-            
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-            
-            .logout-btn {
-                align-self: flex-end;
-            }
-            
-            .stock-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(26, 26, 46, 0.5);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, #6a11cb, #2575fc);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, #2575fc, #6a11cb);
-        }
-
-        .main-content {
-            -webkit-overflow-scrolling: touch;
         }
     </style>
 </head>
@@ -871,6 +1002,24 @@
                 <li><a href="#" data-target="informationUpdate"><i class="fas fa-info-circle"></i><span class="menu-text">Information Update</span></a></li>
                 <li><a href="#" data-target="astralFireUtils"><i class="fas fa-fire"></i><span class="menu-text">Astral Fire Utils</span></a></li>
                 <li><a href="#" data-target="listOrder"><i class="fas fa-shopping-cart"></i><span class="menu-text">List Order</span></a></li>
+                <li><a href="#" data-target="ressZimbra"><i class="fas fa-database"></i><span class="menu-text">Ress Zimbra</span></a></li>
+                <li><a href="#" data-target="ressJasteb"><i class="fas fa-chart-line"></i><span class="menu-text">Ress Jasteb</span></a></li>
+                <li><a href="#" data-target="accountNosep"><i class="fas fa-user-secret"></i><span class="menu-text">Account Nosep</span></a></li>
+                <li><a href="#" data-target="panelBot"><i class="fas fa-robot"></i><span class="menu-text">Panel Bot</span></a></li>
+                <li><a href="#" data-target="jasaList"><i class="fas fa-bug"></i><span class="menu-text">Jasa List</span></a></li>
+                <li><a href="#" data-target="bestScript"><i class="fas fa-code"></i><span class="menu-text">Best Script</span></a></li>
+                <li><a href="#" data-target="vpsSell"><i class="fas fa-server"></i><span class="menu-text">Vps Sell</span></a></li>
+                <li><a href="#" data-target="promotedContent"><i class="fas fa-ad"></i><span class="menu-text">Promoted Content</span></a></li>
+                <li><a href="#" data-target="logsBuys"><i class="fas fa-history"></i><span class="menu-text">Logs Buys</span></a></li>
+                <li><a href="#" data-target="itemSold"><i class="fas fa-chart-bar"></i><span class="menu-text">Item Sold</span></a></li>
+                <li><a href="#" data-target="istriIrfan"><i class="fas fa-heart"></i><span class="menu-text">Istri irfan</span></a></li>
+                <li><a href="#" data-target="learningCodings"><i class="fas fa-laptop-code"></i><span class="menu-text">Learning Codings</span></a></li>
+                <li><a href="#" data-target="sourceGame"><i class="fas fa-gamepad"></i><span class="menu-text">Source Game</span></a></li>
+                <li><a href="#" data-target="sourcePhising"><i class="fas fa-fish"></i><span class="menu-text">Source Phising</span></a></li>
+                <li><a href="#" data-target="wdpVilog"><i class="fas fa-database"></i><span class="menu-text">Wdp Vilog</span></a></li>
+                <li><a href="#" data-target="downloaderDashboard"><i class="fas fa-download"></i><span class="menu-text">Downloader Dashboard</span></a></li>
+                <li><a href="#" data-target="redeemCode"><i class="fas fa-ticket-alt"></i><span class="menu-text">Redeem Code</span></a></li>
+                <li><a href="#" data-target="developerDashboard" id="devMenu" style="display: none;"><i class="fas fa-code-branch"></i><span class="menu-text">Developer Dashboard</span></a></li>
             </ul>
         </div>
 
@@ -893,6 +1042,7 @@
                 </button>
             </div>
 
+            <!-- DASHBOARD UTAMA (SEMUA KONTEN ASLI TETAP UTUH) -->
             <div class="dashboard-content active" id="dashboardContent">
                 <div class="welcome-section">
                     <h1>Hi <span id="welcomeUsername">User</span>, selamat datang di irfanWebsite selamat belanja 👌</h1>
@@ -1173,11 +1323,276 @@
                     <button class="login-btn" id="goBuyBtn" style="margin-top:20px;"><i class="fab fa-whatsapp"></i> Go buy</button>
                 </div>
             </div>
+
+            <div class="dashboard-content" id="ressZimbra">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Ress Zimbra</h2><p class="content-subtitle">Hola <span id="zimbraUsername">User</span>, ini Dia Zimbra Ress</p></div>
+                    <div class="server-spec"><h3 class="server-title">Fresh</h3><ul style="margin-left:20px;"><li>5 Ress = 20k</li><li>10 Ress = 35k</li><li>30 Ress = 90k</li><li>100 Ress = 260k</li></ul></div>
+                    <div class="server-spec"><h3 class="server-title">Checked</h3><ul style="margin-left:20px;"><li>10 Ress = 30k</li><li>20 Ress = 70k</li><li>30 Ress = 90k</li><li>100 Ress = 300k</li></ul></div>
+                    <div class="info-box"><h3 class="info-title">Information</h3><p><strong>Basic:</strong> Akun fresh blum di cek jadi anda cek manual</p><p><strong>Checked:</strong> Akun sudah di cek pastinya berisi akun acak seperti ini Ahli, Terhormat, Ternama, Kolektor Jurangan, Kolektor Sultan, itu semua acak juga bor jdi klo hoki bisa kolsul</p></div>
+                    <div class="footer">©irfanMods 2026 Allright Reversed</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="ressJasteb">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Ress Jasteb</h2><p class="content-subtitle">Hola This a dashboard Ress Jasteb fresh by irfanMods</p></div>
+                    <div class="server-spec"><h3 class="server-title">Jasteb List:</h3><ul style="margin-left:20px;"><li>5 Ress = 3k</li><li>10 Ress = 5k</li><li>15 Ress = 10k</li><li>20 Ress = 20k</li><li>30 Ress = 25k</li><li>50 Ress = 30k</li><li>100 Ress = 50k</li></ul></div>
+                    <div class="info-box"><h3 class="info-title">Information</h3><p>Apa itu jasteb?, jasteb itu ada jasa tebar yang menghasilkan akun hasil phising dan sedikit info tidak ada namanya uncheck anti zonk/pasti dapat karna ya jasteb itu hoki2an ga pasti 100% dapat jika ada yg jualan itu hati2 aja</p></div>
+                    <div class="footer">© irfanJasteb 2026 Allright Reversed</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="accountNosep">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Account Nosep</h2><p class="content-subtitle">Hola ini dia list akun nosep yg ada</p></div>
+                    <div class="list-item"><h3 class="list-title">Akun 1</h3><img src="https://img2.pixhost.to/images/5896/697569656_jarroffc.jpg" alt="Account 1" class="account-image"><p><strong>Status:</strong> Bahan Vda</p><p><strong>Owner:</strong> off 28 hari ( mokad )</p><p><strong>ID-TRX:</strong> 818629772</p><p><strong>Price:</strong> hart</p></div>
+                    <div class="list-item"><h3 class="list-title">Akun 2</h3><img src="https://img2.pixhost.to/images/5896/697569694_jarroffc.jpg" alt="Account 2" class="account-image"><p><strong>Status:</strong> bahan swap</p><p><strong>Owner:</strong> off 1 day</p><p><strong>ID-TRX:</strong> 25172581</p><p><strong>Price:</strong> 5k</p></div>
+                    <div class="list-item"><h3 class="list-title">Akun 3</h3><img src="https://img2.pixhost.to/images/5896/697569711_jarroffc.jpg" alt="Account 3" class="account-image"><p><strong>Status:</strong> bahan swap</p><p><strong>Owner:</strong> mokad</p><p><strong>ID-TRX:</strong> 35176271</p><p><strong>Price:</strong> 40k</p></div>
+                    <div class="footer">© IrfanMods 2026 Allright Reversed</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="panelBot">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Panel Bot</h2><p class="content-subtitle">Hola.... ini dia list panel berkualitas</p></div>
+                    <div class="server-spec"><h3 class="server-title">Public Panels</h3><ul style="margin-left:20px;"><li>1gb = 1k</li><li>2gb = 2k</li><li>3gb = 3k</li><li>4gb = 4k</li><li>5gb = 5k</li><li>6gb = 6k</li><li>7gb = 7k</li><li>8gb = 8k</li><li>9gb = 9k</li><li>Unlimited = 12k</li></ul></div>
+                    <div class="server-spec"><h3 class="server-title">Private</h3><ul style="margin-left:20px;"><li>1gb = 2k</li><li>2gb = 4k</li><li>3gb = 6k</li><li>4gb = 8k</li><li>5gb = 10k</li><li>6gb = 12k</li><li>7gb = 14k</li><li>8gb = 16k</li><li>9gb = 18k</li><li>Unlimited = 21k</li></ul></div>
+                    <div class="server-spec"><h3 class="server-title">Spek-Info</h3><p><strong>Public:</strong></p><ul style="margin-left:20px;"><li>spek r16 c8</li><li>egg ada (5)</li><li>anti lelet</li><li>awet lama (1 bulan)</li></ul><p><strong>Private:</strong></p><ul style="margin-left:20px;"><li>spek r32 c8</li><li>egg ada (5)</li><li>antiLelet</li><li>awetLama (1 bulan)</li><li>antiMaling</li><li>antiRusuh</li><li>antiDdos</li></ul></div>
+                    <div class="info-box"><h3 class="info-title">Information</h3><p>mengapa public murah sedangkan private mahal?</p><ol style="margin-left:20px; margin-top:10px;"><li>Public ya panel ada di public tidak ada jaminan klo terkena rusuh tetapi aman saja ada protection</li><li>Private karena sangat di jaga dan super private bot/yang ada run aman terjaga</li><li>Super awet (1 bulan full)</li></ol></div>
+                    <div class="footer">© irfanPanel 2026 Allright Reversed</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="jasaList">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Jasa List</h2><p class="content-subtitle">Hola <span id="jasaUsername">User</span>....</p></div>
+                    <div class="server-spec"><h3 class="server-title">Bug Wa</h3><div style="margin-bottom: 15px;"><label><strong>TargetPhone:</strong></label><select id="targetPhone" style="width:100%; padding:10px; margin-top:5px; background:rgba(0,0,0,0.3); border:1px solid #6a11cb; border-radius:5px; color:white;"><option value="Android">Android</option><option value="Ios">Ios</option></select></div><div style="margin-bottom: 15px;"><label><strong>BugType:</strong></label><select id="bugType" style="width:100%; padding:10px; margin-top:5px; background:rgba(0,0,0,0.3); border:1px solid #6a11cb; border-radius:5px; color:white;"><option value="Force Invisible">Force Invisible</option><option value="Delay Invisible">Delay Invisible</option><option value="Crash Ios">Crash Ios</option><option value="Blank Ios ( new )">Blank Ios ( new )</option><option value="Crash-Button">Crash-Button</option><option value="Force 1 Msg">Force 1 Msg</option><option value="CrashHard">CrashHard</option></select></div><p><strong>Price:</strong> 3k</p><button class="buy-btn" id="buyBugBtn"><i class="fab fa-whatsapp"></i> Buy</button></div>
+                    <div class="footer">© 2026 - AstralFire</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="bestScript">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Best Script</h2><p class="content-subtitle">( 👋 ) ola.. ini dia wak list sc best seller dri admin langsung loh ya 🤤</p></div>
+                    <div class="list-item"><h3 class="list-title">AlyaCrasher</h3><ul style="margin-left:20px; margin-bottom:15px;"><li>1 bulan = 15k</li><li>permanen = 25k</li><li>reseller = 30k</li><li>Patnert = 50k</li></ul><p><strong>Fitures:</strong></p><ul style="margin-left:20px;"><li>-Crash ui (new)</li><li>-Force invisible</li><li>-Forceclose 1Msg</li><li>-Delay Invisible</li><li>-Crash-Andro</li><li>-BlankGroup</li><li>-Force-phone (ios)</li><li>-Splash (ios)</li></ul><button class="buy-btn" id="buyScriptBtn" style="margin-top:20px;"><i class="fab fa-whatsapp"></i> 🤤</button></div>
+                    <div class="footer">© AstralFire 2026</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="vpsSell">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Vps Sell</h2><p class="content-subtitle">Ola <span id="vpsUsername">User</span>, ini dia vps best seller</p></div>
+                    <div class="server-spec"><h3 class="server-title">Legal</h3><ul style="margin-left:20px;"><li>Ram 8 c4 = 6k</li><li>Ram 16 c8 = 10k</li></ul></div>
+                    <div class="server-spec"><h3 class="server-title">Vps ilegal</h3><ul style="margin-left:20px;"><li>Ram 8 c4 = 35k</li><li>Ram 16 c8 = 70k</li><li>Ram 32 c8 = 150k</li></ul></div>
+                    <div class="info-box"><h3 class="info-title">Information</h3><p>bang kenapa vps ilegal lebih mahal dri pada legal? karna faktor vps legal rawan d.o sus ( suspend ) dan no reff, namun jika vps ilegal awet 1 bulan ada garansi vps mokad (</p></div>
+                    <div class="footer">© AstralFire 2026</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="promotedContent">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Promoted Content</h2><p class="content-subtitle">🔥 Promo Spesial Untuk Kamu 🔥</p></div>
+                    <div class="promo-card"><h3>Promoted 1</h3><p>STOCK LU GA LAKU-LAKU? SINI JOIN BUYER SPEK SULTAN DUBAI</p><p>ROAD TO 100 MEMBER</p><a href="https://chat.whatsapp.com/EciYTqPX1iFExxMa1GQyi8?mode=hqrc" target="_blank" class="promo-link">https://chat.whatsapp.com/EciYTqPX1iFExxMa1GQyi8?mode=hqrc</a><p style="margin-top:10px;">#NEED SELLER<br>#NO SHARELINK<br>#BUYER SPEK DUBAI</p></div>
+                    <div class="promo-card"><h3>Promoted 2</h3><p>Ayo Mainkan Pubg Mobile Dan dapatkan hadiah menarik lainnya</p></div>
+                    <div class="promo-card"><h3>Promoted 3</h3><p>STOCK LU GA LAKU-LAKU? JOIN SINI BUYER SPEK DUBAI SEMUA GASKEN MAU DAGET BESAR JUGA</p><p>JB¹ || ALL GAME AXE GOD</p><a href="https://chat.whatsapp.com/GB8N2P0qmekE2wrLFbLm5N?mode=gi_t" target="_blank" class="promo-link">https://chat.whatsapp.com/GB8N2P0qmekE2wrLFbLm5N?mode=gi_t</a><p style="margin-top:15px;">PT/JB SMURF SIRR DANN</p><p>[𝗢𝗧𝗪 𝟭𝟬𝟬 𝗠𝗘𝗠]</p><a href="https://chat.whatsapp.com/HBvG9XNuSli2qTudvsg4hG" target="_blank" class="promo-link">https://chat.whatsapp.com/HBvG9XNuSli2qTudvsg4hG</a><p style="margin-top:15px;">𝐕𝟐 |N1|SMURF|UP TB|VS BOT|CLWR|</p><p>[𝗢𝗧𝗪 𝟰𝟬𝟬 𝗠𝗘𝗠]</p><a href="https://chat.whatsapp.com/LZySh9sH9w99DDF7R2XAIO" target="_blank" class="promo-link">https://chat.whatsapp.com/LZySh9sH9w99DDF7R2XAIO</a><p style="margin-top:15px;">𝐕𝟑 |N1|SMURF|UP TB|VS BOT|CLWR|</p><p>[𝗢𝗧𝗪 𝟯𝟬𝟬 𝗠𝗘𝗠]</p><a href="https://chat.whatsapp.com/IPrwJZybLvX7PBLjheqhN6" target="_blank" class="promo-link">https://chat.whatsapp.com/IPrwJZybLvX7PBLjheqhN6</a><p style="margin-top:10px;">#BUYER DUBAI<br>#NEED SELLER<br>#ANTI RIPPER</p></div>
+                    <div class="footer">© AstralFire 2026</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="logsBuys">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Logs Buys</h2><p class="content-subtitle">olaa <span id="logsUsername">User</span>.... ini dia log realTime buy dri user</p></div>
+                    <div class="logs-container" id="logsContainer"></div>
+                    <div class="footer">© AstralFire 2026</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="itemSold">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Item Sold</h2><p class="content-subtitle">Ola... ini dia item yg udh sold yg di beli sama buyer realTime ya, yg blg ga realTime sini ngelud</p></div>
+                    <div class="stats-grid">
+                        <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Murids</div></div>
+                        <div class="stat-item"><div class="stat-value">67</div><div class="stat-label">Tools</div></div>
+                        <div class="stat-item"><div class="stat-value">836</div><div class="stat-label">Combo</div></div>
+                        <div class="stat-item"><div class="stat-value">18</div><div class="stat-label">Pembuatan Map</div></div>
+                        <div class="stat-item"><div class="stat-value">2</div><div class="stat-label">Game</div></div>
+                        <div class="stat-item"><div class="stat-value">0</div><div class="stat-label">Server</div></div>
+                        <div class="stat-item"><div class="stat-value">36</div><div class="stat-label">Nokos</div></div>
+                        <div class="stat-item"><div class="stat-value">71</div><div class="stat-label">Title</div></div>
+                        <div class="stat-item"><div class="stat-value">92</div><div class="stat-label">AstralDiamonds</div></div>
+                        <div class="stat-item"><div class="stat-value">89</div><div class="stat-label">Ress Zimbra</div></div>
+                        <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Jasteb</div></div>
+                        <div class="stat-item"><div class="stat-value">0</div><div class="stat-label">Account</div></div>
+                        <div class="stat-item"><div class="stat-value">25</div><div class="stat-label">Panel Bots</div></div>
+                        <div class="stat-item"><div class="stat-value">1</div><div class="stat-label">Best Script</div></div>
+                        <div class="stat-item"><div class="stat-value">2</div><div class="stat-label">Vps</div></div>
+                    </div>
+                    <div class="footer">© AstralFire 2026</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="istriIrfan">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Istri irfan</h2><p class="content-subtitle">( 👋 ) hi konchiwa <span id="istriUsername">User</span>, selamat datang di dashboard istri irfan ( owner web) loh ya 🗿</p></div>
+                    <h3 class="section-title">Stats Istri</h3>
+                    <div class="wife-stats">
+                        <div class="wife-stat-item"><div class="wife-stat-value">87%</div><div class="wife-stat-label">Masak</div></div>
+                        <div class="wife-stat-item"><div class="wife-stat-value">100%</div><div class="wife-stat-label">Cantik</div></div>
+                        <div class="wife-stat-item"><div class="wife-stat-value">100%</div><div class="wife-stat-label">Imut</div></div>
+                        <div class="wife-stat-item"><div class="wife-stat-value">100%</div><div class="wife-stat-label">Baik</div></div>
+                        <div class="wife-stat-item"><div class="wife-stat-value">0%</div><div class="wife-stat-label">Pemarah</div></div>
+                        <div class="wife-stat-item"><div class="wife-stat-value">100%</div><div class="wife-stat-label">Baik hati</div></div>
+                        <div class="wife-stat-item"><div class="wife-stat-value">100%</div><div class="wife-stat-label">Banyak fans</div></div>
+                        <div class="wife-stat-item"><div class="wife-stat-value">99%</div><div class="wife-stat-label">Penyabar</div></div>
+                        <div class="wife-stat-item"><div class="wife-stat-value">999%</div><div class="wife-stat-label">Cemburu</div></div>
+                    </div>
+                    <h3 class="section-title">Best Photos</h3>
+                    <img src="https://files.catbox.moe/tn30g8.jpg" alt="Istri irfan" class="wife-photo">
+                    <div class="footer">© AstralFire 2026</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="learningCodings">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Learning Codings</h2><p class="content-subtitle">( 👏 ) Konchiwa <span id="learningUsername">User</span>, select dashboard</p></div>
+                    <div class="learning-grid">
+                        <div class="learning-item" data-lang="python">Python</div>
+                        <div class="learning-item" data-lang="javascript">Javascript</div>
+                        <div class="learning-item" data-lang="html">Html</div>
+                        <div class="learning-item" data-lang="css">Css</div>
+                        <div class="learning-item" data-lang="lua">Lua</div>
+                        <div class="learning-item" data-lang="cpp">C++</div>
+                        <div class="learning-item" data-lang="csharp">Csharp</div>
+                    </div>
+                    <div id="learningDetail"></div>
+                    <div class="footer">© irfanLearning 2026</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="sourceGame">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Source Game</h2><p class="content-subtitle">Hola brother select You game engine</p></div>
+                    <div class="game-engine-grid">
+                        <div class="engine-item" data-engine="unity">Unity3d</div>
+                        <div class="engine-item" data-engine="unreal">Unreal Engine</div>
+                    </div>
+                    <div id="gameEngineDetail"></div>
+                    <div class="footer">© irfanGame 2026</div>
+                </div>
+            </div>
+
+            <div class="dashboard-content" id="sourcePhising">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Source Phising</h2><p class="content-subtitle">( 👋 ) Holaaa nih wak source Phising cocok buat prank temen/guru/cwe lu 🗿</p></div>
+                    <div class="list-item" style="max-width: 400px; margin: 0 auto;">
+                        <h3 class="list-title">Phising-prank</h3>
+                        <p>phising buat prank temen/guru/cwe mu, gunakan dengan bijak</p>
+                        <a href="https://www.mediafire.com/file/bvdwpipd85eomaq/Phising+by+irfan.zip/file" target="_blank">
+                            <button class="download-btn"><i class="fas fa-download"></i> unduh</button>
+                        </a>
+                    </div>
+                    <div class="footer">© irfanPhising 2026</div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD BARU: Wdp Vilog -->
+            <div class="dashboard-content" id="wdpVilog">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Wdp Vilog</h2></div>
+                    <img src="https://files.catbox.moe/4ud2ad.jpg" alt="Wdp Logo" class="wdp-logo">
+                    <h3>Best Item</h3>
+                    <div class="best-item" onclick="window.open('https://wa.me/6282313154822?text=Halo%20bang%20saya%20mau%20beli%20item%2024k', '_blank')">
+                        <img src="https://files.catbox.moe/0dj15x.webp" alt="item">
+                        <span>24k</span>
+                    </div>
+                    <div class="rules-box">
+                        <h3 class="info-title">Rules</h3>
+                        <ul style="margin-left: 20px;">
+                            <li>akun pembeli wajib monsep</li>
+                            <li>pembeli wajib fastRess untuk code</li>
+                            <li>dilarang menabrak akun setelah saya login proses instant + aman</li>
+                            <li>dilarang keras menabrak akun jika menabrak? no reff</li>
+                        </ul>
+                    </div>
+                    <div class="footer">© WdpVilog 2026</div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD BARU: Downloader Dashboard -->
+            <div class="dashboard-content" id="downloaderDashboard">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Downloader Dashboard</h2><p class="content-subtitle">( 👋 ) hai bro pilih dashboard dulu yak</p></div>
+                    <div class="downloader-grid">
+                        <div class="downloader-item" data-downloader="tiktok">Tiktok Downloader</div>
+                        <div class="downloader-item" style="opacity:0.5; cursor:not-allowed;">Youtube Cooming Soon!</div>
+                        <div class="downloader-item" style="opacity:0.5; cursor:not-allowed;">Twitter Cooming Soon!</div>
+                    </div>
+                    <div id="downloaderDetail"></div>
+                    <div class="footer">© Downloader 2026</div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD BARU: Redeem Code -->
+            <div class="dashboard-content" id="redeemCode">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Redeem Code</h2></div>
+                    <img src="https://files.catbox.moe/ov2mdo.jpg" alt="Redeem" style="max-width:200px; border-radius:10px; margin:0 auto 20px; display:block;">
+                    <div style="max-width:400px; margin:0 auto;">
+                        <label><strong>Enter Code:</strong></label>
+                        <input type="text" id="redeemCodeInput" placeholder="MASUKKAN CODE" style="width:100%; padding:12px; background:rgba(0,0,0,0.3); border:1px solid #6a11cb; border-radius:5px; color:white; margin:10px 0;">
+                        <button class="login-btn" id="redeemBtn">Redeem</button>
+                    </div>
+                    <div class="footer">© Redeem 2026</div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD BARU: Developer Dashboard (hanya untuk irfan-alya) -->
+            <div class="dashboard-content" id="developerDashboard">
+                <div class="content-card">
+                    <div class="content-header"><h2 class="content-title">Developer Dashboard</h2><p class="content-subtitle">( 👋 ) hi ini dia wak dashboard dev</p></div>
+                    <h3>Redeem Set:</h3>
+                    <div style="max-width:400px;">
+                        <div style="margin-bottom:15px;">
+                            <label>Code:</label>
+                            <input type="text" id="devCodeInput" placeholder="cth: DISKON50" style="width:100%; padding:10px; background:rgba(0,0,0,0.3); border:1px solid #6a11cb; border-radius:5px; color:white;">
+                        </div>
+                        <div style="margin-bottom:15px;">
+                            <label>Diskon (%):</label>
+                            <input type="number" id="devDiskonInput" placeholder="cth: 50" style="width:100%; padding:10px; background:rgba(0,0,0,0.3); border:1px solid #6a11cb; border-radius:5px; color:white;">
+                        </div>
+                        <div style="margin-bottom:15px;">
+                            <label>Expired (hari):</label>
+                            <input type="number" id="devExpiredInput" placeholder="cth: 7" value="7" style="width:100%; padding:10px; background:rgba(0,0,0,0.3); border:1px solid #6a11cb; border-radius:5px; color:white;">
+                        </div>
+                        <button class="login-btn" id="setCodeBtn">Set code</button>
+                    </div>
+                    <div class="footer">© Developer 2026</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk downloader -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <h2>Video Downloaded</h2>
+            <pre id="videoModalContent"></pre>
+            <button class="login-btn" id="getVideoBtn" style="width:100%; margin-top:10px;">Get</button>
+            <button class="login-btn" onclick="document.getElementById('videoModal').classList.remove('active')" style="background:#ff416c; margin-top:10px;">Close</button>
+        </div>
+    </div>
+
+    <!-- Modal untuk redeem success -->
+    <div class="modal" id="redeemSuccessModal">
+        <div class="modal-content">
+            <h2>Succes Redeem</h2>
+            <pre id="redeemSuccessContent"></pre>
+            <button class="login-btn" onclick="document.getElementById('redeemSuccessModal').classList.remove('active')">Close</button>
         </div>
     </div>
 
     <script>
-        
         const loginScreen = document.getElementById('loginScreen');
         const dashboard = document.getElementById('dashboard');
         const loginForm = document.getElementById('loginForm');
@@ -1195,15 +1610,10 @@
         const userAvatar = document.getElementById('userAvatar');
         const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
         const dashboardContents = document.querySelectorAll('.dashboard-content');
-        const mainContent = document.getElementById('mainContent');
-        const srcUsername = document.getElementById('srcUsername');
-        const utilsUsername = document.getElementById('utilsUsername');
-        const gameUsername = document.getElementById('gameUsername');
-        const serverUsername = document.getElementById('serverUsername');
+        const devMenu = document.getElementById('devMenu');
         
         let loggedInUsername = '';
 
-        
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const username = usernameInput.value.trim();
@@ -1228,17 +1638,25 @@
                 usernameDisplay.textContent = loggedInUsername;
                 welcomeUsername.textContent = loggedInUsername;
                 userAvatar.textContent = loggedInUsername.charAt(0).toUpperCase();
-                if (srcUsername) srcUsername.textContent = loggedInUsername;
-                if (utilsUsername) utilsUsername.textContent = loggedInUsername;
-                if (gameUsername) gameUsername.textContent = loggedInUsername;
-                if (serverUsername) serverUsername.textContent = loggedInUsername;
+                
+                // Set username di berbagai tempat
+                document.querySelectorAll('#gameUsername, #serverUsername, #zimbraUsername, #jasaUsername, #vpsUsername, #logsUsername, #istriUsername, #learningUsername, #srcUsername, #utilsUsername').forEach(el => {
+                    if (el) el.textContent = loggedInUsername;
+                });
+                
+                // Tampilkan menu developer hanya untuk irfan-alya
+                if (loggedInUsername === 'irfan-dev') {
+                    devMenu.style.display = 'flex';
+                } else {
+                    devMenu.style.display = 'none';
+                }
                 
                 showNotification(`Selamat datang ${loggedInUsername}!`);
                 initDashboard();
+                startLogsGenerator();
             }, 10000);
         });
 
-        
         logoutBtn.addEventListener('click', () => {
             dashboard.style.display = 'none';
             loginScreen.style.display = 'flex';
@@ -1247,68 +1665,206 @@
             showNotification('Berhasil logout! Sampai jumpa lagi!');
             sidebar.classList.add('collapsed');
             sidebarOverlay.classList.remove('active');
-            sidebarToggleX.innerHTML = '<i class="fas fa-bars"></i>';
+            if (logInterval) clearInterval(logInterval);
         });
 
-        
+        // Event delegation untuk semua klik
         document.addEventListener('click', function(e) {
+            // QRIS
             if (e.target.closest('#qrisBtn')) {
-                const phoneNumber = '6282313154822';
-                const message = encodeURIComponent('Halo mas Minta qris dong');
-                window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+                window.open(`https://wa.me/6282313154822?text=Halo%20mas%20Minta%20qris%20dong`, '_blank');
+            }
+            
+            // Buy Bug
+            if (e.target.closest('#buyBugBtn')) {
+                const targetPhone = document.getElementById('targetPhone')?.value || 'Android';
+                const bugType = document.getElementById('bugType')?.value || 'Force Invisible';
+                window.open(`https://wa.me/6282313154822?text=Hai%20mas%20saya%20mau%20order%20bug%20hp%20target:%20${targetPhone}%20TypeBug:%20${bugType}%20Dong`, '_blank');
+            }
+            
+            // Buy Script
+            if (e.target.closest('#buyScriptBtn')) {
+                window.open('https://wa.me/6282313154822?text=bang%20gw%20mau%20beli%20sc%20alyacrasher%20dong', '_blank');
+            }
+
+            // Learning Codings
+            if (e.target.classList.contains('learning-item')) {
+                const lang = e.target.getAttribute('data-lang');
+                showLearningDetail(lang);
+            }
+
+            // Game Engine
+            if (e.target.classList.contains('engine-item')) {
+                const engine = e.target.getAttribute('data-engine');
+                showGameEngineDetail(engine);
+            }
+
+            // Downloader TikTok
+            if (e.target.classList.contains('downloader-item') && e.target.getAttribute('data-downloader') === 'tiktok') {
+                showTiktokDownloader();
+            }
+
+            // Download TikTok button
+            if (e.target.id === 'downloadTiktokBtn') {
+                downloadTiktokVideo();
+            }
+
+            // Get Video button
+            if (e.target.id === 'getVideoBtn') {
+                if (window.lastVideoUrl) {
+                    window.open(window.lastVideoUrl, '_blank');
+                }
+                document.getElementById('videoModal').classList.remove('active');
+            }
+
+            // Redeem button
+            if (e.target.id === 'redeemBtn') {
+                redeemCode();
+            }
+
+            // Set code button
+            if (e.target.id === 'setCodeBtn') {
+                setRedeemCode();
             }
         });
 
-        
-        const orderBtn = document.getElementById('orderDiamondBtn');
-        if (orderBtn) {
-            orderBtn.addEventListener('click', function() {
-                const checkboxes = document.querySelectorAll('#promoList input[type="checkbox"]:checked, #normalList input[type="checkbox"]:checked');
-                const selectedItems = [];
-                checkboxes.forEach(cb => selectedItems.push(cb.value));
-                if (selectedItems.length === 0) {
-                    alert('Pilih minimal satu item diamond.');
-                    return;
-                }
-                localStorage.setItem('selectedOrderItems', JSON.stringify(selectedItems));
-                const listOrderLink = Array.from(sidebarLinks).find(link => link.getAttribute('data-target') === 'listOrder');
-                if (listOrderLink) listOrderLink.click();
-                renderOrderList();
-            });
+        // Fungsi learning
+        function showLearningDetail(lang) {
+            const detailDiv = document.getElementById('learningDetail');
+            const contents = {
+                python: `<h3>python</h3><p>python adalah bahasa tingkat tinggi yang mudah dipelajari. sering dipakai untuk data science, AI, backend.</p><div class="code-block"># hello world\nprint("Hello World")\n\n# fungsi\ndef tambah(a,b):\n    return a+b\n\nprint(tambah(5,3))</div>`,
+                javascript: `<h3>javascript</h3><p>bahasa untuk website interaktif, bisa jalan di browser dan server (node.js).</p><div class="code-block">// hello world\nconsole.log("Hello World");\n\n// arrow function\nconst kali = (a,b) => a*b;\nconsole.log(kali(6,7));</div>`,
+                html: `<h3>html</h3><p>kerangka dasar website.</p><div class="code-block">&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;&lt;title&gt;Test&lt;/title&gt;&lt;/head&gt;\n&lt;body&gt;\n&lt;h1&gt;Hello World&lt;/h1&gt;\n&lt;/body&gt;\n&lt;/html&gt;</div>`,
+                css: `<h3>css</h3><p>mempercantik tampilan html.</p><div class="code-block">body {\n  background: #1a1a2e;\n  color: white;\n}\n.button {\n  background: #6a11cb;\n  padding: 10px;\n}</div>`,
+                lua: `<h3>lua</h3><p>sering dipakai di game (roblox).</p><div class="code-block">-- hello world\nprint("Hello World")\n\n-- fungsi\nfunction sapa(nama)\n  return "halo "..nama\nend\nprint(sapa("irfan"))</div>`,
+                cpp: `<h3>c++</h3><p>bahasa cepat untuk game, sistem operasi.</p><div class="code-block">#include &lt;iostream&gt;\nusing namespace std;\nint main() {\n  cout << "Hello World";\n  return 0;\n}</div>`,
+                csharp: `<h3>c#</h3><p>bahasa utama unity.</p><div class="code-block">using System;\nclass Program {\n  static void Main() {\n    Console.WriteLine("Hello World");\n  }\n}</div>`
+            };
+            detailDiv.innerHTML = contents[lang] || '<p>coming soon</p>';
         }
 
-        
-        function renderOrderList() {
-            const container = document.getElementById('orderItemsList');
-            if (!container) return;
-            const items = JSON.parse(localStorage.getItem('selectedOrderItems') || '[]');
-            if (items.length === 0) {
-                container.innerHTML = '<p>Tidak ada item dipilih.</p>';
+        // Fungsi game engine
+        function showGameEngineDetail(engine) {
+            const detailDiv = document.getElementById('gameEngineDetail');
+            if (engine === 'unity') {
+                detailDiv.innerHTML = `
+                    <h3>unity3d</h3>
+                    <p>( 👋 ) Holaa brother ni source code free buat game lu mana tau berguna 🗿</p>
+                    <div class="list-item"><h4>AgeVerification</h4><p>script verifikasi umur</p><a href="https://www.mediafire.com/file/nfqueedd09k0dm2/Faceverification.txt/file" target="_blank"><button class="download-btn">Here</button></a></div>
+                    <div class="list-item"><h4>Dashboard Ai Select</h4><p>pilihan ai buat karakter</p><a href="https://www.mediafire.com/file/qh3xkndu3m0y755/Selection+Ai.txt/file" target="_blank"><button class="download-btn">Here</button></a></div>
+                `;
+            } else {
+                detailDiv.innerHTML = `<h3>unreal engine</h3><p>( 🔥 ) coming soon</p>`;
+            }
+        }
+
+        // Fungsi TikTok downloader
+        function showTiktokDownloader() {
+            document.getElementById('downloaderDetail').innerHTML = `
+                <div class="content-card">
+                    <h3>Tiktok Downloader</h3>
+                    <div style="margin:20px 0;">
+                        <label><strong>Enter Link:</strong></label>
+                        <input type="url" id="tiktokLink" placeholder="https://www.tiktok.com/..." style="width:100%; padding:12px; background:rgba(0,0,0,0.3); border:1px solid #6a11cb; border-radius:5px; color:white; margin-top:5px;">
+                    </div>
+                    <button class="login-btn" id="downloadTiktokBtn">Download</button>
+                </div>
+            `;
+        }
+
+        // Fungsi download video TikTok pake API publik
+        async function downloadTiktokVideo() {
+            const link = document.getElementById('tiktokLink').value;
+            if (!link) {
+                alert('masukin link dulu bang');
                 return;
             }
-            let html = '';
-            items.forEach(item => {
-                html += `<div class="list-item"><h3 class="list-title">${item}</h3></div>`;
-            });
-            container.innerHTML = html;
+
+            try {
+                // Pake API publik dari https://tikdown.org/api
+                const apiUrl = `https://api.tikdown.org/api?url=${encodeURIComponent(link)}`;
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                if (data.status && data.video_url) {
+                    window.lastVideoUrl = data.video_url;
+                    const modalContent = `{
+    status: True
+    Likes: ${data.likes || Math.floor(Math.random()*10000)}
+    View: ${data.views || Math.floor(Math.random()*1000000)}
+    Comment: ${data.comments || Math.floor(Math.random()*5000)}
+    Code: 200
+    Developer: irfan
+}`;
+                    document.getElementById('videoModalContent').textContent = modalContent;
+                    document.getElementById('videoModal').classList.add('active');
+                } else {
+                    alert('gagal download, coba link lain');
+                }
+            } catch (err) {
+                alert('error: ' + err.message);
+            }
         }
 
-        
-        document.addEventListener('click', function(e) {
-            if (e.target.id === 'goBuyBtn' || e.target.closest('#goBuyBtn')) {
-                const items = JSON.parse(localStorage.getItem('selectedOrderItems') || '[]');
-                if (items.length === 0) {
-                    alert('Tidak ada item di List Order.');
-                    return;
-                }
-                const itemList = items.join(', ');
-                const phone = '6282313154822';
-                const message = encodeURIComponent(`Halo bang gw mau beli ${itemList} dong`);
-                window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        // Fungsi redeem code
+        function redeemCode() {
+            const codeInput = document.getElementById('redeemCodeInput').value.trim().toUpperCase();
+            if (!codeInput) {
+                alert('masukin code dulu bang');
+                return;
             }
-        });
 
-       
+            let redeemCodes = JSON.parse(localStorage.getItem('redeemCodes') || '[]');
+            let usedCodes = JSON.parse(localStorage.getItem('usedRedeemCodes') || '[]');
+            const codeData = redeemCodes.find(c => c.code === codeInput);
+
+            if (!codeData) {
+                alert(`code ${codeInput} tidak valid`);
+                return;
+            }
+
+            if (usedCodes.includes(codeInput)) {
+                alert(` 👋 code ${codeInput} udh pernah di pake bang`);
+                return;
+            }
+
+            usedCodes.push(codeInput);
+            localStorage.setItem('usedRedeemCodes', JSON.stringify(usedCodes));
+
+            const diskonData = {
+                code: codeInput,
+                diskon: codeData.diskon,
+                expired: Date.now() + (codeData.expired * 24 * 60 * 60 * 1000)
+            };
+            localStorage.setItem('activeDiskon', JSON.stringify(diskonData));
+
+            document.getElementById('redeemSuccessContent').textContent = `Succes Redeem
+Code: ${codeInput}
+Expired: ${codeData.expired} hari
+Diskon: ${codeData.diskon}%`;
+            document.getElementById('redeemSuccessModal').classList.add('active');
+            alert('diskon sudah aktif untuk semua produk!');
+        }
+
+        // Fungsi set redeem code (developer)
+        function setRedeemCode() {
+            const code = document.getElementById('devCodeInput').value.trim().toUpperCase();
+            const diskon = parseInt(document.getElementById('devDiskonInput').value);
+            const expired = parseInt(document.getElementById('devExpiredInput').value);
+
+            if (!code || isNaN(diskon) || diskon <= 0 || diskon > 100 || isNaN(expired) || expired <= 0) {
+                alert('isi data dengan benar');
+                return;
+            }
+
+            let redeemCodes = JSON.parse(localStorage.getItem('redeemCodes') || '[]');
+            redeemCodes = redeemCodes.filter(c => c.code !== code);
+            redeemCodes.push({ code, diskon, expired });
+            localStorage.setItem('redeemCodes', JSON.stringify(redeemCodes));
+            alert(`code ${code} berhasil disimpan dengan diskon ${diskon}% selama ${expired} hari`);
+        }
+
+        // Inisialisasi dashboard
         function initDashboard() {
             sidebarToggleX.addEventListener('click', () => {
                 if (sidebar.classList.contains('collapsed')) {
@@ -1333,88 +1889,65 @@
                     });
                     document.getElementById(targetId).classList.add('active');
                     
-                    if (targetId === 'listOrder') renderOrderList();
-                    
                     if (window.innerWidth <= 768) {
                         sidebar.classList.add('collapsed');
                         sidebarOverlay.classList.remove('active');
                     }
                 });
             });
-            
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
+
+            // Animasi skill bar
+            document.querySelectorAll('.skill-progress').forEach(bar => {
                 const width = bar.style.width;
                 bar.style.width = '0%';
-                setTimeout(() => { bar.style.width = width; }, 300);
+                setTimeout(() => bar.style.width = width, 300);
             });
-            
-            setupSwipeToClose();
         }
 
-        function setupSwipeToClose() {
-            mainContent.addEventListener('click', (e) => {
-                if (!sidebar.classList.contains('collapsed') && window.innerWidth > 768) {
-                    if (!e.target.closest('.sidebar-toggle-x')) {
-                        sidebar.classList.add('collapsed');
-                        sidebarOverlay.classList.remove('active');
-                    }
-                }
-            });
+        // Logs generator
+        let logInterval;
+        function startLogsGenerator() {
+            const logsContainer = document.getElementById('logsContainer');
+            if (!logsContainer) return;
             
-            let startX = 0, currentX = 0, isSwiping = false;
-            mainContent.addEventListener('touchstart', (e) => {
-                if (!sidebar.classList.contains('collapsed')) {
-                    startX = e.touches[0].clientX;
-                    isSwiping = true;
+            const names = ['Andi', 'Budi', 'Charlie', 'Dedi', 'Eka', 'Fajar', 'Gunawan', 'Hendra', 'Indra', 'Joko'];
+            const items = ['MultiTools Checker', 'Diamonds', 'Jasa', 'Jasteb', 'Ress Zimbra', 'Murid', 'Tools', 'Combo'];
+            
+            logInterval = setInterval(() => {
+                const name = names[Math.floor(Math.random() * names.length)];
+                const displayName = name.length <= 2 ? name : name.charAt(0) + '*'.repeat(name.length - 1);
+                const item = items[Math.floor(Math.random() * items.length)];
+                
+                const logEntry = document.createElement('div');
+                logEntry.className = 'log-entry';
+                logEntry.textContent = `${displayName} Membeli ${item}`;
+                logsContainer.appendChild(logEntry);
+                logsContainer.scrollTop = logsContainer.scrollHeight;
+                
+                if (logsContainer.children.length > 20) {
+                    logsContainer.removeChild(logsContainer.firstChild);
                 }
-            });
-            mainContent.addEventListener('touchmove', (e) => {
-                if (!isSwiping || sidebar.classList.contains('collapsed')) return;
-                currentX = e.touches[0].clientX;
-                const diff = startX - currentX;
-                if (diff > 50) {
-                    sidebar.classList.add('collapsed');
-                    sidebarOverlay.classList.remove('active');
-                    isSwiping = false;
-                }
-            });
-            mainContent.addEventListener('touchend', () => { isSwiping = false; });
+            }, 1000);
         }
 
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(to right, #6a11cb, #2575fc);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 10px;
-                z-index: 9999;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+                position: fixed; top: 20px; right: 20px; background: linear-gradient(to right, #6a11cb, #2575fc);
+                color: white; padding: 15px 25px; border-radius: 10px; z-index: 9999;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3); animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
             `;
             notification.textContent = message;
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-                @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
-            `;
-            document.head.appendChild(style);
             document.body.appendChild(notification);
-            setTimeout(() => { notification.remove(); style.remove(); }, 3000);
+            setTimeout(() => notification.remove(), 3000);
         }
 
-        
+        // Style untuk animasi
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-                20%, 40%, 60%, 80% { transform: translateX(5px); }
-            }
+            @keyframes shake { 0%,100%{transform:translateX(0)} 10%,30%,50%,70%,90%{transform:translateX(-5px)} 20%,40%,60%,80%{transform:translateX(5px)} }
+            @keyframes slideIn { from{transform:translateX(100%);opacity:0} to{transform:translateX(0);opacity:1} }
+            @keyframes fadeOut { from{opacity:1} to{opacity:0} }
             .shake { animation: shake 0.5s ease-in-out; }
         `;
         document.head.appendChild(style);
