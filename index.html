@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Irfan Website</title>
+    <title>messi vs gw</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
-            margin: 0;
+            margin: 0
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
@@ -120,6 +120,12 @@
             box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
         }
 
+        .login-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .error-message {
             color: #ff6b6b;
             margin-top: 10px;
@@ -211,6 +217,27 @@
             background: rgba(106, 17, 203, 0.3);
             color: #fff;
             border-left: 3px solid #6a11cb;
+        }
+
+        .sidebar-menu a.locked {
+            background: rgba(255, 0, 0, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            border-left: 3px solid #ff4444;
+            cursor: not-allowed;
+            position: relative;
+        }
+
+        .sidebar-menu a.locked:hover {
+            background: rgba(255, 0, 0, 0.15);
+        }
+
+        .sidebar-menu a.locked::after {
+            content: '\f023';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 20px;
+            color: #ff4444;
         }
 
         .sidebar-menu i {
@@ -487,6 +514,16 @@
             border-top: 5px solid #6a11cb;
             animation: spin 1s linear infinite;
             margin-bottom: 30px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #6a11cb;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
         }
 
         @keyframes spin {
@@ -805,7 +842,7 @@
             border: 3px solid #ff69b4;
         }
 
-        .learning-grid, .game-engine-grid, .downloader-grid {
+        .learning-grid, .game-engine-grid, .downloader-grid, .access-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 15px;
@@ -901,6 +938,129 @@
             border-radius: 10px;
             margin: 15px 0;
             overflow-x: auto;
+        }
+
+        .cek-input-group {
+            margin-bottom: 20px;
+        }
+
+        .cek-input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cek-input-group input, .cek-input-group select, .cek-input-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .cek-input-group input:focus, .cek-input-group select:focus, .cek-input-group textarea:focus {
+            outline: none;
+            border-color: #6a11cb;
+        }
+
+        .result-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #6a11cb;
+            font-family: monospace;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .status-unlocked {
+            background: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+            border: 1px solid #28a745;
+        }
+
+        .status-locked {
+            background: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            border: 1px solid #dc3545;
+        }
+        
+        .chat-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            height: 300px;
+            overflow-y: auto;
+            margin: 20px 0;
+            border: 1px solid rgba(106, 17, 203, 0.3);
+        }
+        .chat-message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-message.user {
+            align-items: flex-end;
+        }
+        .chat-bubble {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            background: rgba(106, 17, 203, 0.2);
+            border: 1px solid rgba(106, 17, 203, 0.3);
+        }
+        .chat-message.user .chat-bubble {
+            background: rgba(37, 117, 252, 0.2);
+            border-color: #2575fc;
+        }
+        .chat-message .chat-name {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 3px;
+        }
+        
+        .video-container {
+            margin: 20px 0;
+        }
+        .video-container video {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            border: 2px solid #6a11cb;
+        }
+        
+        select, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+        select option {
+            background: #1a1a2e;
+        }
+        
+        .price-list {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            border-left: 4px solid #6a11cb;
         }
 
         @media (max-width: 992px) {
@@ -1019,6 +1179,20 @@
                 <li><a href="#" data-target="wdpVilog"><i class="fas fa-database"></i><span class="menu-text">Wdp Vilog</span></a></li>
                 <li><a href="#" data-target="downloaderDashboard"><i class="fas fa-download"></i><span class="menu-text">Downloader Dashboard</span></a></li>
                 <li><a href="#" data-target="redeemCode"><i class="fas fa-ticket-alt"></i><span class="menu-text">Redeem Code</span></a></li>
+                <li><a href="#" data-target="cekBan" id="cekBanLink"><i class="fas fa-ban"></i><span class="menu-text">CekBan</span></a></li>
+                <li><a href="#" data-target="cekBind" id="cekBindLink"><i class="fas fa-link"></i><span class="menu-text">Cek Bind</span></a></li>
+                <li><a href="#" data-target="cekBuktop" id="cekBuktopLink"><i class="fas fa-shopping-bag"></i><span class="menu-text">Cek Buktop</span></a></li>
+                <li><a href="#" data-target="astral18" id="astral18Link"><i class="fas fa-eye"></i><span class="menu-text">Astral-18+</span></a></li>
+                <li><a href="#" data-target="astralAiChats" id="astralAiChatsLink"><i class="fas fa-comment-dots"></i><span class="menu-text">Astral Ai chats</span></a></li>
+                <li><a href="#" data-target="aiGenerateApp" id="aiGenerateAppLink"><i class="fas fa-magic"></i><span class="menu-text">Ai-generateApp</span></a></li>
+                <li><a href="#" data-target="ddosMenu" id="ddosMenuLink"><i class="fas fa-skull-crossbones"></i><span class="menu-text">Ddos Menu</span></a></li>
+                <li><a href="#" data-target="subdomainFinder" id="subdomainFinderLink"><i class="fas fa-search"></i><span class="menu-text">Subdomain Finder</span></a></li>
+                <li><a href="#" data-target="bugMenu" id="bugMenuLink"><i class="fas fa-bug"></i><span class="menu-text">Bug Menu</span></a></li>
+                <li><a href="#" data-target="unbandMenu" id="unbandMenuLink"><i class="fas fa-unlock-alt"></i><span class="menu-text">Unband Menu</span></a></li>
+                <li><a href="#" data-target="vipVideoPack" id="vipVideoPackLink"><i class="fas fa-video"></i><span class="menu-text">Vip VideoPack</span></a></li>
+                <li><a href="#" data-target="redeemAcces" id="redeemAccesLink"><i class="fas fa-key"></i><span class="menu-text">Redeem Acces</span></a></li>
+                <li><a href="#" data-target="suntikDashboard" id="suntikDashboardLink"><i class="fas fa-syringe"></i><span class="menu-text">Suntik Dashboard</span></a></li>
+                <li><a href="#" data-target="testingFunction" id="testingFunctionLink"><i class="fas fa-flask"></i><span class="menu-text">Testing Function</span></a></li>
                 <li><a href="#" data-target="developerDashboard" id="devMenu" style="display: none;"><i class="fas fa-code-branch"></i><span class="menu-text">Developer Dashboard</span></a></li>
             </ul>
         </div>
@@ -1042,7 +1216,6 @@
                 </button>
             </div>
 
-            <!-- DASHBOARD UTAMA (SEMUA KONTEN ASLI TETAP UTUH) -->
             <div class="dashboard-content active" id="dashboardContent">
                 <div class="welcome-section">
                     <h1>Hi <span id="welcomeUsername">User</span>, selamat datang di irfanWebsite selamat belanja 👌</h1>
@@ -1074,6 +1247,7 @@
                 <div class="footer"><p>© irfan 2026 Allright Reverse</p></div>
             </div>
 
+           
             <div class="dashboard-content" id="muridList">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Murid List</h2><p class="content-subtitle">Daftar kelas yang tersedia untuk belajar pemrograman</p></div>
@@ -1084,6 +1258,7 @@
                 </div>
             </div>
 
+           
             <div class="dashboard-content" id="toolsSelling">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Tools Selling</h2><p class="content-subtitle">Tools premium dengan kualitas terbaik</p></div>
@@ -1096,6 +1271,7 @@
                 </div>
             </div>
 
+            
             <div class="dashboard-content" id="rateUser">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Rate User</h2><p class="content-subtitle">Testimoni dari pembeli dan murid yang sudah bergabung</p></div>
@@ -1107,6 +1283,7 @@
                 </div>
             </div>
 
+            
             <div class="dashboard-content" id="comboList">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Combo List Price</h2><p class="content-subtitle">Paket combo terbaik dengan harga spesial</p></div>
@@ -1121,6 +1298,7 @@
                 </div>
             </div>
 
+            
             <div class="dashboard-content" id="pembuatanMap">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Pembuatan Map Roblox</h2><p class="content-subtitle">Layanan pembuatan map Roblox custom dengan kualitas premium</p></div>
@@ -1134,6 +1312,7 @@
                 </div>
             </div>
 
+          
             <div class="dashboard-content" id="jasaPembuatanGame">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Jasa Pembuatan Game</h2><p class="content-subtitle">Halo <span id="gameUsername">User</span>, ini dia layanan pembuatan game kami</p></div>
@@ -1144,6 +1323,7 @@
                 </div>
             </div>
 
+          
             <div class="dashboard-content" id="serverList">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Server List</h2><p class="content-subtitle">Hi, <span id="serverUsername">User</span> selamat datang di Server List tempat server game berkualitas tinggi</p></div>
@@ -1155,6 +1335,7 @@
                 </div>
             </div>
 
+            <!-- Nokos List -->
             <div class="dashboard-content" id="nokosList">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Nokos List</h2><p class="content-subtitle">Welcome kakak nokos list Silakan di pilih 👌</p></div>
@@ -1165,6 +1346,7 @@
                 </div>
             </div>
 
+            <!-- Payment -->
             <div class="dashboard-content" id="payment">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Payment Dashboard</h2><p class="content-subtitle">Metode pembayaran yang tersedia</p></div>
@@ -1177,6 +1359,7 @@
                 </div>
             </div>
 
+            <!-- Source Code -->
             <div class="dashboard-content" id="sourceCode">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Source Code</h2><p class="content-subtitle">Hi <span id="srcUsername">User</span>, This A Free Source code free for you</p></div>
@@ -1187,6 +1370,7 @@
                 </div>
             </div>
 
+            <!-- Buy Title -->
             <div class="dashboard-content" id="buyTitle">
                 <div class="content-card">
                     <div class="content-header">
@@ -1249,6 +1433,7 @@
                 </div>
             </div>
 
+            <!-- Astral Diamonds -->
             <div class="dashboard-content" id="astralDiamonds">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Astral Diamonds</h2><p class="content-subtitle">Isi data dengan benar</p></div>
@@ -1280,6 +1465,7 @@
                 </div>
             </div>
 
+            <!-- Information Update -->
             <div class="dashboard-content" id="informationUpdate">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Information Update</h2></div>
@@ -1291,6 +1477,7 @@
                 </div>
             </div>
 
+            <!-- Astral Fire Utils -->
             <div class="dashboard-content" id="astralFireUtils">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Astral Fire Utils</h2><p class="content-subtitle">Hai <span id="utilsUsername">User</span>, This a Dashboard RealTime Database Astral Fire</p></div>
@@ -1316,6 +1503,7 @@
                 </div>
             </div>
 
+            <!-- List Order -->
             <div class="dashboard-content" id="listOrder">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">List Order</h2><p class="content-subtitle">Item yang dipilih akan muncul di sini</p></div>
@@ -1324,6 +1512,7 @@
                 </div>
             </div>
 
+            <!-- Ress Zimbra -->
             <div class="dashboard-content" id="ressZimbra">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Ress Zimbra</h2><p class="content-subtitle">Hola <span id="zimbraUsername">User</span>, ini Dia Zimbra Ress</p></div>
@@ -1334,6 +1523,7 @@
                 </div>
             </div>
 
+            <!-- Ress Jasteb -->
             <div class="dashboard-content" id="ressJasteb">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Ress Jasteb</h2><p class="content-subtitle">Hola This a dashboard Ress Jasteb fresh by irfanMods</p></div>
@@ -1343,6 +1533,7 @@
                 </div>
             </div>
 
+            <!-- Account Nosep -->
             <div class="dashboard-content" id="accountNosep">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Account Nosep</h2><p class="content-subtitle">Hola ini dia list akun nosep yg ada</p></div>
@@ -1353,6 +1544,7 @@
                 </div>
             </div>
 
+            <!-- Panel Bot -->
             <div class="dashboard-content" id="panelBot">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Panel Bot</h2><p class="content-subtitle">Hola.... ini dia list panel berkualitas</p></div>
@@ -1364,6 +1556,7 @@
                 </div>
             </div>
 
+            <!-- Jasa List -->
             <div class="dashboard-content" id="jasaList">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Jasa List</h2><p class="content-subtitle">Hola <span id="jasaUsername">User</span>....</p></div>
@@ -1372,6 +1565,7 @@
                 </div>
             </div>
 
+            <!-- Best Script -->
             <div class="dashboard-content" id="bestScript">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Best Script</h2><p class="content-subtitle">( 👋 ) ola.. ini dia wak list sc best seller dri admin langsung loh ya 🤤</p></div>
@@ -1380,6 +1574,7 @@
                 </div>
             </div>
 
+            <!-- Vps Sell -->
             <div class="dashboard-content" id="vpsSell">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Vps Sell</h2><p class="content-subtitle">Ola <span id="vpsUsername">User</span>, ini dia vps best seller</p></div>
@@ -1390,6 +1585,7 @@
                 </div>
             </div>
 
+            <!-- Promoted Content -->
             <div class="dashboard-content" id="promotedContent">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Promoted Content</h2><p class="content-subtitle">🔥 Promo Spesial Untuk Kamu 🔥</p></div>
@@ -1400,6 +1596,7 @@
                 </div>
             </div>
 
+            <!-- Logs Buys -->
             <div class="dashboard-content" id="logsBuys">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Logs Buys</h2><p class="content-subtitle">olaa <span id="logsUsername">User</span>.... ini dia log realTime buy dri user</p></div>
@@ -1408,6 +1605,7 @@
                 </div>
             </div>
 
+            <!-- Item Sold -->
             <div class="dashboard-content" id="itemSold">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Item Sold</h2><p class="content-subtitle">Ola... ini dia item yg udh sold yg di beli sama buyer realTime ya, yg blg ga realTime sini ngelud</p></div>
@@ -1432,6 +1630,7 @@
                 </div>
             </div>
 
+            <!-- Istri irfan -->
             <div class="dashboard-content" id="istriIrfan">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Istri irfan</h2><p class="content-subtitle">( 👋 ) hi konchiwa <span id="istriUsername">User</span>, selamat datang di dashboard istri irfan ( owner web) loh ya 🗿</p></div>
@@ -1453,6 +1652,7 @@
                 </div>
             </div>
 
+            <!-- Learning Codings -->
             <div class="dashboard-content" id="learningCodings">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Learning Codings</h2><p class="content-subtitle">( 👏 ) Konchiwa <span id="learningUsername">User</span>, select dashboard</p></div>
@@ -1470,6 +1670,7 @@
                 </div>
             </div>
 
+            <!-- Source Game -->
             <div class="dashboard-content" id="sourceGame">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Source Game</h2><p class="content-subtitle">Hola brother select You game engine</p></div>
@@ -1482,6 +1683,7 @@
                 </div>
             </div>
 
+            <!-- Source Phising -->
             <div class="dashboard-content" id="sourcePhising">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Source Phising</h2><p class="content-subtitle">( 👋 ) Holaaa nih wak source Phising cocok buat prank temen/guru/cwe lu 🗿</p></div>
@@ -1489,14 +1691,14 @@
                         <h3 class="list-title">Phising-prank</h3>
                         <p>phising buat prank temen/guru/cwe mu, gunakan dengan bijak</p>
                         <a href="https://www.mediafire.com/file/bvdwpipd85eomaq/Phising+by+irfan.zip/file" target="_blank">
-                            <button class="download-btn"><i class="fas fa-download"></i> unduh</button>
+                            <button class="login-btn"><i class="fas fa-download"></i> unduh</button>
                         </a>
                     </div>
                     <div class="footer">© irfanPhising 2026</div>
                 </div>
             </div>
 
-            <!-- DASHBOARD BARU: Wdp Vilog -->
+            <!-- Wdp Vilog -->
             <div class="dashboard-content" id="wdpVilog">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Wdp Vilog</h2></div>
@@ -1519,7 +1721,7 @@
                 </div>
             </div>
 
-            <!-- DASHBOARD BARU: Downloader Dashboard -->
+            <!-- Downloader Dashboard -->
             <div class="dashboard-content" id="downloaderDashboard">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Downloader Dashboard</h2><p class="content-subtitle">( 👋 ) hai bro pilih dashboard dulu yak</p></div>
@@ -1533,7 +1735,7 @@
                 </div>
             </div>
 
-            <!-- DASHBOARD BARU: Redeem Code -->
+            <!-- Redeem Code -->
             <div class="dashboard-content" id="redeemCode">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Redeem Code</h2></div>
@@ -1547,12 +1749,387 @@
                 </div>
             </div>
 
-            <!-- DASHBOARD BARU: Developer Dashboard (hanya untuk irfan-alya) -->
+            <!-- CekBan -->
+            <div class="dashboard-content" id="cekBan">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">CekBan</h2>
+                        <p class="content-subtitle">hai <span id="cekBanUsername">User</span>, selamat datang di CekBan website by irfan</p>
+                    </div>
+                    <div class="status-badge status-unlocked" id="cekBanStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter ID:</label>
+                        <input type="text" id="cekBanId" placeholder="contoh 17396283">
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter Server:</label>
+                        <input type="text" id="cekBanServer" placeholder="contoh 7281">
+                    </div>
+                    
+                    <button class="login-btn" id="cekBanBtn">Cek</button>
+                    
+                    <div id="cekBanResult" class="result-box" style="display: none; white-space: pre-wrap;"></div>
+                    <div id="cekBanSpinner" class="spinner" style="display: none;"></div>
+                    
+                    <div class="footer">© irfan cekBan - 2026</div>
+                </div>
+            </div>
+
+            <!-- Cek Bind -->
+            <div class="dashboard-content" id="cekBind">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Cek Bind</h2>
+                        <p class="content-subtitle">hai <span id="cekBindUsername">User</span>, selamat datang di CekBind website by irfan</p>
+                    </div>
+                    <div class="status-badge status-unlocked" id="cekBindStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter ID:</label>
+                        <input type="text" id="cekBindId" placeholder="contoh 17396283">
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter Server:</label>
+                        <input type="text" id="cekBindServer" placeholder="contoh 7281">
+                    </div>
+                    
+                    <button class="login-btn" id="cekBindBtn">Cek</button>
+                    
+                    <div id="cekBindResult" class="result-box" style="display: none; white-space: pre-wrap;"></div>
+                    <div id="cekBindSpinner" class="spinner" style="display: none;"></div>
+                    
+                    <div class="footer">© irfan cekBind - 2026</div>
+                </div>
+            </div>
+
+            <!-- Cek Buktop -->
+            <div class="dashboard-content" id="cekBuktop">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Cek Buktop</h2>
+                        <p class="content-subtitle">hai <span id="cekBuktopUsername">User</span>, selamat datang di CekBuktop website by irfan</p>
+                    </div>
+                    <div class="status-badge status-unlocked" id="cekBuktopStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter ID:</label>
+                        <input type="text" id="cekBuktopId" placeholder="contoh 17396283">
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter Server:</label>
+                        <input type="text" id="cekBuktopServer" placeholder="contoh 7281">
+                    </div>
+                    
+                    <button class="login-btn" id="cekBuktopBtn">Cek</button>
+                    
+                    <div id="cekBuktopResult" class="result-box" style="display: none; white-space: pre-wrap;"></div>
+                    <div id="cekBuktopSpinner" class="spinner" style="display: none;"></div>
+                    
+                    <div class="footer">© irfan cekBuktop - 2026</div>
+                </div>
+            </div>
+
+            <!-- ========== 8 DASHBOARD BARU ========== -->
+            <!-- Astral-18+ -->
+            <div class="dashboard-content" id="astral18">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Astral-18+</h2>
+                        <p class="content-subtitle">Hai <span id="astral18Username">User</span>, Chat dengan AI 18+ disini</p>
+                    </div>
+                    <div class="status-badge status-unlocked" id="astral18Status">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    <div class="chat-box" id="astral18Chat">
+                        <div class="chat-message ai">
+                            <div class="chat-name">AI-18+</div>
+                            <div class="chat-bubble">Halo, aku siap chat 18+ denganmu. Ketik sesuatu...</div>
+                        </div>
+                    </div>
+                    <div class="input-group" style="display: flex; gap: 10px;">
+                        <input type="text" id="astral18Input" placeholder="Ketik pesan..." style="flex: 1;">
+                        <button class="login-btn" id="astral18Send" style="width: auto; padding: 12px 25px;">Kirim</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Astral Ai chats -->
+            <div class="dashboard-content" id="astralAiChats">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Astral Ai chats</h2>
+                        <p class="content-subtitle">Hai <span id="astralAiUsername">User</span></p>
+                    </div>
+                    <div class="status-badge status-unlocked" id="astralAiStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    <div class="chat-box" id="astralAiChat">
+                        <div class="chat-message ai">
+                            <div class="chat-name">Astral AI</div>
+                            <div class="chat-bubble">Halo, ada yang bisa dibantu?</div>
+                        </div>
+                    </div>
+                    <div class="input-group" style="display: flex; gap: 10px;">
+                        <input type="text" id="astralAiInput" placeholder="Ketik pesan..." style="flex: 1;">
+                        <button class="login-btn" id="astralAiSend" style="width: auto; padding: 12px 25px;">Kirim</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ai-generateApp -->
+            <div class="dashboard-content" id="aiGenerateApp">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Ai-generateApp</h2>
+                        <p class="content-subtitle">Hai <span id="aiGenUsername">User</span></p>
+                    </div>
+                    <div class="status-badge status-unlocked" id="aiGenStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    <div class="chat-box" id="aiGenChat">
+                        <div class="chat-message ai">
+                            <div class="chat-name">App Generator</div>
+                            <div class="chat-bubble">Halo, mau generate app apa?</div>
+                        </div>
+                    </div>
+                    <div class="input-group" style="display: flex; gap: 10px;">
+                        <input type="text" id="aiGenInput" placeholder="Ketik pesan..." style="flex: 1;">
+                        <button class="login-btn" id="aiGenSend" style="width: auto; padding: 12px 25px;">Kirim</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ddos Menu -->
+            <div class="dashboard-content" id="ddosMenu">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Ddos Menu</h2>
+                    </div>
+                    <div class="status-badge status-unlocked" id="ddosStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    <p>Selamat datang! <span id="ddosUsername">User</span> selamat memakai</p>
+                    <p>StatusServer: <span style="color: #28a745;">Online</span> | Botnet: <span style="color: #28a745;">Online</span></p>
+                    
+                    <div class="cek-input-group">
+                        <label>Link Target:</label>
+                        <input type="url" id="ddosTarget" placeholder="https://example.com">
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Port:</label>
+                        <input type="number" id="ddosPort" placeholder="80">
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>DdosType:</label>
+                        <select id="ddosType">
+                            <option>flood</option>
+                            <option>kill</option>
+                            <option>pidoras</option>
+                            <option>h2</option>
+                            <option>byypas</option>
+                            <option>glory</option>
+                            <option>mix</option>
+                            <option>strike</option>
+                            <option>hold</option>
+                            <option>httpx</option>
+                            <option>specx</option>
+                            <option>h2px</option>
+                            <option>medusa</option>
+                            <option>cf</option>
+                            <option>SSDP Amplification</option>
+                            <option>ReDos</option>
+                        </select>
+                    </div>
+                    
+                    <button class="login-btn" id="ddosLaunch">Launch</button>
+                    <p id="ddosCooldown" style="color: #ff6b6b; margin-top: 10px;"></p>
+                </div>
+            </div>
+
+            <!-- Subdomain Finder -->
+            <div class="dashboard-content" id="subdomainFinder">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Subdomain Finder</h2>
+                    </div>
+                    <div class="status-badge status-unlocked" id="subdomainStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    <p>Hola <span id="subdomainUsername">User</span> welcome in Subdomain Finder</p>
+                    
+                    <div class="cek-input-group">
+                        <label>EnterDomain:</label>
+                        <input type="text" id="subdomainDomain" placeholder="https://porn-hub.com">
+                    </div>
+                    
+                    <button class="login-btn" id="subdomainFind">Find</button>
+                    
+                    <div id="subdomainResult" class="result-box" style="display: none; white-space: pre-wrap;"></div>
+                </div>
+            </div>
+
+            <!-- Bug Menu -->
+            <div class="dashboard-content" id="bugMenu">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Bug Menu</h2>
+                    </div>
+                    <div class="status-badge status-unlocked" id="bugStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter Target:</label>
+                        <input type="text" id="bugTarget" placeholder="628xxxxx">
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>TypeBug:</label>
+                        <select id="bugType">
+                            <option>Crash Ios</option>
+                            <option>DelayHard</option>
+                            <option>Crash-ui</option>
+                            <option>ForceClose invisible</option>
+                            <option>Delayhard Invisible</option>
+                            <option>Sedot Kouta</option>
+                            <option>BlankTag</option>
+                        </select>
+                    </div>
+                    
+                    <button class="login-btn" id="bugSend">Send</button>
+                </div>
+            </div>
+
+            <!-- Unband Menu -->
+            <div class="dashboard-content" id="unbandMenu">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Unband Menu</h2>
+                    </div>
+                    <div class="status-badge status-unlocked" id="unbandStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter Number:</label>
+                        <input type="text" id="unbandNumber" placeholder="ID/Number">
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>SelectType:</label>
+                        <select id="unbandType">
+                            <option>Spam</option>
+                            <option>KenonHard</option>
+                            <option>Kenon-Lumut</option>
+                            <option>Kenon-Fresh</option>
+                            <option>Kenon-BatuHard</option>
+                        </select>
+                    </div>
+                    
+                    <button class="login-btn" id="unbandGas">Gas</button>
+                </div>
+            </div>
+
+            <!-- Vip VideoPack -->
+            <div class="dashboard-content" id="vipVideoPack">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Vip VideoPack</h2>
+                    </div>
+                    <div class="status-badge status-unlocked" id="vipVideoStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    <p>Hola <span id="vipVideoUsername">User</span>, this a cosplayer Pack Videos</p>
+                    
+                    <div class="video-container">
+                        <h3>Piyo:</h3>
+                        <video controls src="https://files.catbox.moe/ie7ufn.mp4"></video>
+                    </div>
+                    
+                    <div class="video-container">
+                        <h3>Piyo 1:</h3>
+                        <video controls src="https://files.catbox.moe/me162g.mp4"></video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redeem Acces -->
+            <div class="dashboard-content" id="redeemAcces">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Redeem Acces</h2>
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter Code:</label>
+                        <input type="text" id="redeemAccesCode" placeholder="MASUKKAN CODE">
+                    </div>
+                    
+                    <button class="login-btn" id="redeemAccesBtn">Acces</button>
+                    
+                    <div class="footer">© Redeem Acces 2026</div>
+                </div>
+            </div>
+
+            <!-- Suntik Dashboard -->
+            <div class="dashboard-content" id="suntikDashboard">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Suntik Dashboard</h2>
+                        <p class="content-subtitle">Konchiwa <span id="suntikUsername">User</span>, welcome pilih dulu ya</p>
+                    </div>
+                    
+                    <div style="margin: 30px 0; text-align: center;">
+                        <button class="login-btn" id="waChannelMemberBtn" style="width: auto; padding: 15px 40px;">
+                            <i class="fab fa-whatsapp"></i> Whatsapp Channel Member
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing Function -->
+            <div class="dashboard-content" id="testingFunction">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">Testing Function</h2>
+                    </div>
+                    <div class="status-badge status-unlocked" id="testingFunctionStatus">
+                        <i class="fas fa-check-circle"></i> Status: Unlimited
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Enter You function</label>
+                        <textarea id="functionCode" rows="8" placeholder="Masukkan function disini..."></textarea>
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>EnterLoop:</label>
+                        <input type="number" id="functionLoop" placeholder="Jumlah loop" value="1">
+                    </div>
+                    
+                    <button class="login-btn" id="functionTryBtn">Try</button>
+                </div>
+            </div>
+
+            <!-- Developer Dashboard -->
             <div class="dashboard-content" id="developerDashboard">
                 <div class="content-card">
                     <div class="content-header"><h2 class="content-title">Developer Dashboard</h2><p class="content-subtitle">( 👋 ) hi ini dia wak dashboard dev</p></div>
+                    
                     <h3>Redeem Set:</h3>
-                    <div style="max-width:400px;">
+                    <div style="max-width:400px; margin-bottom: 30px;">
                         <div style="margin-bottom:15px;">
                             <label>Code:</label>
                             <input type="text" id="devCodeInput" placeholder="cth: DISKON50" style="width:100%; padding:10px; background:rgba(0,0,0,0.3); border:1px solid #6a11cb; border-radius:5px; color:white;">
@@ -1567,13 +2144,131 @@
                         </div>
                         <button class="login-btn" id="setCodeBtn">Set code</button>
                     </div>
+
+                    <h3>Generate Acces</h3>
+                    <div style="max-width:400px;">
+                        <div class="cek-input-group">
+                            <label>EnterCode:</label>
+                            <input type="text" id="generateAccesCode" placeholder="cth: ACCESSVIP">
+                        </div>
+                        
+                        <div class="cek-input-group">
+                            <label>Title:</label>
+                            <input type="text" id="generateAccesTitle" placeholder="cth: VIP Access">
+                        </div>
+                        
+                        <div class="cek-input-group">
+                            <label>Expired (hari):</label>
+                            <input type="number" id="generateAccesExpired" placeholder="cth: 30" value="30">
+                        </div>
+                        
+                        <button class="login-btn" id="generateAccesBtn">Create</button>
+                    </div>
+                    
                     <div class="footer">© Developer 2026</div>
+                </div>
+            </div>
+
+            <!-- WhatsApp Channel Member Dashboard (hidden, akan ditampilkan saat tombol diklik) -->
+            <div class="dashboard-content" id="waChannelMember">
+                <div class="content-card">
+                    <div class="content-header">
+                        <h2 class="content-title">WhatsApp Channel Member</h2>
+                        <p class="content-subtitle">Hai <span id="waChannelUsername">User</span>, ini dia Channel Member</p>
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Select Type:</label>
+                        <select id="waChannelType">
+                            <option value="slow">Slow</option>
+                            <option value="fast">Fast</option>
+                        </select>
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Link/Target:</label>
+                        <input type="text" id="waChannelTarget" placeholder="https://chat.whatsapp.com/...">
+                    </div>
+                    
+                    <div id="slowPrice" class="price-list">
+                        List Slow
+                        10 = 367
+                        20 = 734 
+                        50 = 1.672
+                        100 = 3.261
+                        200 = 6.927
+                        300 = 8.927
+                        500 = 17.281
+                        1000 = 31.829
+                        2000 = 70.000
+                    </div>
+                    
+                    <div id="fastPrice" class="price-list" style="display: none;">
+                        List Fast 
+                        10 = 471
+                        20 = 891
+                        50 = 1.928
+                        100 = 4.000
+                        200 = 8.928
+                        500 = 21.000
+                        1000 = 43.819
+                        2000 = 91.000
+                    </div>
+                    
+                    <div class="cek-input-group">
+                        <label>Jumlah:</label>
+                        <input type="number" id="waChannelJumlah" placeholder="Masukkan jumlah">
+                    </div>
+                    
+                    <button class="login-btn" id="waChannelOrderBtn">Order Now</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal untuk downloader -->
+    <!-- Modal Update Notifikasi -->
+    <div class="modal" id="updateModal">
+        <div class="modal-content">
+            <h2 style="color: #6a11cb; margin-bottom: 20px;">📢 NEW UPDATES & INFORMATION</h2>
+            <pre style="background: #1a1a2e; padding: 20px; border-radius: 10px; line-height: 1.8;">
+-Ai 18+ ( vip ) 
+-CekBan ( vip ) 
+-CekBind ( vip ) 
+-CekBuktop ( vip ) 
+-Ai 18+ ( vip ) 
+-AiChat ( vip ) 
+-Ai GenerateApp ( vip ) 
+-DdosMenu ( vip ) 
+-BugMenu ( vip ) 
+-Subdomain Finder ( vip ) 
+-Unband Menu ( vip ) 
+-Vip VideoCosplayer ( vip ) 
+-New SuntikDashboard
+-Testing-Function ( Vip ) 
+-Function Selling</pre>
+            <button class="login-btn" onclick="document.getElementById('updateModal').classList.remove('active')" style="margin-top: 20px;">Close</button>
+        </div>
+    </div>
+
+    <!-- Modal Redeem Success -->
+    <div class="modal" id="redeemSuccessModal">
+        <div class="modal-content">
+            <h2>Succes Redeem</h2>
+            <pre id="redeemSuccessContent"></pre>
+            <button class="login-btn" onclick="document.getElementById('redeemSuccessModal').classList.remove('active')">Close</button>
+        </div>
+    </div>
+
+    <!-- Modal untuk redeem acces success -->
+    <div class="modal" id="redeemAccesModal">
+        <div class="modal-content">
+            <h2>Succes</h2>
+            <pre id="redeemAccesContent"></pre>
+            <button class="login-btn" onclick="document.getElementById('redeemAccesModal').classList.remove('active')">Close</button>
+        </div>
+    </div>
+
+    <!-- Modal video downloader -->
     <div class="modal" id="videoModal">
         <div class="modal-content">
             <h2>Video Downloaded</h2>
@@ -1583,16 +2278,8 @@
         </div>
     </div>
 
-    <!-- Modal untuk redeem success -->
-    <div class="modal" id="redeemSuccessModal">
-        <div class="modal-content">
-            <h2>Succes Redeem</h2>
-            <pre id="redeemSuccessContent"></pre>
-            <button class="login-btn" onclick="document.getElementById('redeemSuccessModal').classList.remove('active')">Close</button>
-        </div>
-    </div>
-
     <script>
+        // ==================== GLOBAL VARIABLES ====================
         const loginScreen = document.getElementById('loginScreen');
         const dashboard = document.getElementById('dashboard');
         const loginForm = document.getElementById('loginForm');
@@ -1611,9 +2298,27 @@
         const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
         const dashboardContents = document.querySelectorAll('.dashboard-content');
         const devMenu = document.getElementById('devMenu');
+        const updateModal = document.getElementById('updateModal');
+        
+        // Locked menu elements
+        const cekBanLink = document.getElementById('cekBanLink');
+        const cekBindLink = document.getElementById('cekBindLink');
+        const cekBuktopLink = document.getElementById('cekBuktopLink');
+        const astral18Link = document.getElementById('astral18Link');
+        const astralAiChatsLink = document.getElementById('astralAiChatsLink');
+        const aiGenerateAppLink = document.getElementById('aiGenerateAppLink');
+        const ddosMenuLink = document.getElementById('ddosMenuLink');
+        const subdomainFinderLink = document.getElementById('subdomainFinderLink');
+        const bugMenuLink = document.getElementById('bugMenuLink');
+        const unbandMenuLink = document.getElementById('unbandMenuLink');
+        const vipVideoPackLink = document.getElementById('vipVideoPackLink');
+        const testingFunctionLink = document.getElementById('testingFunctionLink');
+        const redeemAccesLink = document.getElementById('redeemAccesLink');
+        const suntikDashboardLink = document.getElementById('suntikDashboardLink');
         
         let loggedInUsername = '';
 
+        // ==================== LOGIN ====================
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const username = usernameInput.value.trim();
@@ -1640,13 +2345,33 @@
                 userAvatar.textContent = loggedInUsername.charAt(0).toUpperCase();
                 
                 // Set username di berbagai tempat
-                document.querySelectorAll('#gameUsername, #serverUsername, #zimbraUsername, #jasaUsername, #vpsUsername, #logsUsername, #istriUsername, #learningUsername, #srcUsername, #utilsUsername').forEach(el => {
+                const usernameSpans = [
+                    'gameUsername', 'serverUsername', 'zimbraUsername', 'jasaUsername', 
+                    'vpsUsername', 'logsUsername', 'istriUsername', 'learningUsername', 
+                    'srcUsername', 'utilsUsername', 'cekBanUsername', 'cekBindUsername', 
+                    'cekBuktopUsername', 'astral18Username', 'astralAiUsername', 
+                    'aiGenUsername', 'ddosUsername', 'subdomainUsername', 'vipVideoUsername',
+                    'suntikUsername', 'waChannelUsername'
+                ];
+                usernameSpans.forEach(id => {
+                    const el = document.getElementById(id);
                     if (el) el.textContent = loggedInUsername;
                 });
                 
-                // Tampilkan menu developer hanya untuk irfan-alya
+                // Tampilkan modal update setelah login
+                setTimeout(() => {
+                    updateModal.classList.add('active');
+                }, 1000);
+                
+                // Cek apakah user sudah redeem acces
+                checkRedeemAcces();
+                
+                // Tampilkan menu developer hanya untuk irfan-dev
                 if (loggedInUsername === 'irfan-dev') {
                     devMenu.style.display = 'flex';
+                    devMenu.classList.remove('locked');
+                    devMenu.removeAttribute('onclick');
+                    devMenu.style.pointerEvents = 'auto';
                 } else {
                     devMenu.style.display = 'none';
                 }
@@ -1654,7 +2379,7 @@
                 showNotification(`Selamat datang ${loggedInUsername}!`);
                 initDashboard();
                 startLogsGenerator();
-            }, 10000);
+            }, 5000);
         });
 
         logoutBtn.addEventListener('click', () => {
@@ -1668,7 +2393,103 @@
             if (logInterval) clearInterval(logInterval);
         });
 
-        // Event delegation untuk semua klik
+        // ==================== CEK REDEEM ACCES ====================
+        function checkRedeemAcces() {
+            const redeemAccesList = JSON.parse(localStorage.getItem('redeemAccesList') || '[]');
+            const userRedeem = JSON.parse(localStorage.getItem(`redeem_${loggedInUsername}`) || 'null');
+            
+            let hasAccess = false;
+            
+            if (userRedeem) {
+                const now = Date.now();
+                if (userRedeem.expired > now) {
+                    hasAccess = true;
+                } else {
+                    localStorage.removeItem(`redeem_${loggedInUsername}`);
+                }
+            }
+            
+            if (!hasAccess) {
+                for (let redeem of redeemAccesList) {
+                    if (redeem.username === loggedInUsername) {
+                        const now = Date.now();
+                        if (redeem.expired > now) {
+                            hasAccess = true;
+                            localStorage.setItem(`redeem_${loggedInUsername}`, JSON.stringify(redeem));
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // Daftar menu yang harus dikunci jika belum punya akses
+            const allLockedMenus = [
+                cekBanLink, cekBindLink, cekBuktopLink, astral18Link, astralAiChatsLink,
+                aiGenerateAppLink, ddosMenuLink, subdomainFinderLink, bugMenuLink,
+                unbandMenuLink, vipVideoPackLink, testingFunctionLink
+            ];
+            
+            if (hasAccess) {
+                allLockedMenus.forEach(link => {
+                    if (link) {
+                        link.classList.remove('locked');
+                        link.removeAttribute('onclick');
+                        link.style.pointerEvents = 'auto';
+                        const icon = link.querySelector('i');
+                        if (icon) icon.style.color = '';
+                    }
+                });
+                
+                // Update status badges
+                document.getElementById('cekBanStatus') && (document.getElementById('cekBanStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('cekBindStatus') && (document.getElementById('cekBindStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('cekBuktopStatus') && (document.getElementById('cekBuktopStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('astral18Status') && (document.getElementById('astral18Status').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('astralAiStatus') && (document.getElementById('astralAiStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('aiGenStatus') && (document.getElementById('aiGenStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('ddosStatus') && (document.getElementById('ddosStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('subdomainStatus') && (document.getElementById('subdomainStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('bugStatus') && (document.getElementById('bugStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('unbandStatus') && (document.getElementById('unbandStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('vipVideoStatus') && (document.getElementById('vipVideoStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+                document.getElementById('testingFunctionStatus') && (document.getElementById('testingFunctionStatus').innerHTML = '<i class="fas fa-check-circle"></i> Status: Unlimited');
+            } else {
+                allLockedMenus.forEach(link => {
+                    if (link) {
+                        link.classList.add('locked');
+                        link.setAttribute('onclick', 'return false;');
+                        link.style.pointerEvents = 'none';
+                    }
+                });
+                
+                document.getElementById('cekBanStatus') && (document.getElementById('cekBanStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('cekBindStatus') && (document.getElementById('cekBindStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('cekBuktopStatus') && (document.getElementById('cekBuktopStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('astral18Status') && (document.getElementById('astral18Status').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('astralAiStatus') && (document.getElementById('astralAiStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('aiGenStatus') && (document.getElementById('aiGenStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('ddosStatus') && (document.getElementById('ddosStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('subdomainStatus') && (document.getElementById('subdomainStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('bugStatus') && (document.getElementById('bugStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('unbandStatus') && (document.getElementById('unbandStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('vipVideoStatus') && (document.getElementById('vipVideoStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+                document.getElementById('testingFunctionStatus') && (document.getElementById('testingFunctionStatus').innerHTML = '<i class="fas fa-lock"></i> Status: Locked (Redeem Acces dulu)');
+            }
+            
+            // Suntik Dashboard dan RedeemAcces tidak perlu dikunci
+            if (suntikDashboardLink) {
+                suntikDashboardLink.classList.remove('locked');
+                suntikDashboardLink.removeAttribute('onclick');
+                suntikDashboardLink.style.pointerEvents = 'auto';
+            }
+            if (redeemAccesLink) {
+                redeemAccesLink.classList.remove('locked');
+                redeemAccesLink.removeAttribute('onclick');
+                redeemAccesLink.style.pointerEvents = 'auto';
+            }
+        }
+
+        // ==================== EVENT LISTENER ====================
         document.addEventListener('click', function(e) {
             // QRIS
             if (e.target.closest('#qrisBtn')) {
@@ -1717,18 +2538,230 @@
                 document.getElementById('videoModal').classList.remove('active');
             }
 
-            // Redeem button
+            // Redeem code button
             if (e.target.id === 'redeemBtn') {
                 redeemCode();
+            }
+
+            // CekBan button
+            if (e.target.id === 'cekBanBtn') {
+                cekBan();
+            }
+
+            // CekBind button
+            if (e.target.id === 'cekBindBtn') {
+                cekBind();
+            }
+
+            // CekBuktop button
+            if (e.target.id === 'cekBuktopBtn') {
+                cekBuktop();
+            }
+
+            // Redeem Acces button
+            if (e.target.id === 'redeemAccesBtn') {
+                redeemAcces();
+            }
+
+            // Generate Acces button
+            if (e.target.id === 'generateAccesBtn') {
+                generateAcces();
             }
 
             // Set code button
             if (e.target.id === 'setCodeBtn') {
                 setRedeemCode();
             }
+            
+            // WhatsApp Channel Member button
+            if (e.target.id === 'waChannelMemberBtn') {
+                // Sembunyikan suntikDashboard, tampilkan waChannelMember
+                document.querySelectorAll('.dashboard-content').forEach(c => c.classList.remove('active'));
+                document.getElementById('waChannelMember').classList.add('active');
+                
+                // Update active class di sidebar
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                // Cari link yang sesuai (optional)
+            }
+            
+            // WA Channel type change
+            if (e.target.id === 'waChannelType') {
+                const type = e.target.value;
+                document.getElementById('slowPrice').style.display = type === 'slow' ? 'block' : 'none';
+                document.getElementById('fastPrice').style.display = type === 'fast' ? 'block' : 'none';
+            }
+            
+            // WA Channel Order button
+            if (e.target.id === 'waChannelOrderBtn') {
+                const type = document.getElementById('waChannelType').value;
+                const target = document.getElementById('waChannelTarget').value;
+                const jumlah = document.getElementById('waChannelJumlah').value;
+                
+                if (!target || !jumlah) {
+                    alert('Isi link/target dan jumlah dulu bang!');
+                    return;
+                }
+                
+                alert(`Order berhasil!\nType: ${type}\nJumlah: ${jumlah}\nLink: ${target}\n\nSilahkan lanjutkan pembayaran.`);
+            }
+            
+            // ========== FITUR DASHBOARD BARU ==========
+            // Astral-18+ Send
+            if (e.target.id === 'astral18Send') {
+                const input = document.getElementById('astral18Input');
+                const chatBox = document.getElementById('astral18Chat');
+                if (input.value.trim() !== '') {
+                    const userMsg = document.createElement('div');
+                    userMsg.className = 'chat-message user';
+                    userMsg.innerHTML = `<div class="chat-name">${loggedInUsername}</div><div class="chat-bubble">${input.value}</div>`;
+                    chatBox.appendChild(userMsg);
+                    
+                    setTimeout(() => {
+                        const aiMsg = document.createElement('div');
+                        aiMsg.className = 'chat-message ai';
+                        aiMsg.innerHTML = `<div class="chat-name">AI-18+</div><div class="chat-bubble">Maaf, fitur 18+ masih dalam pengembangan. Coba lagi nanti.</div>`;
+                        chatBox.appendChild(aiMsg);
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    }, 1000);
+                    
+                    input.value = '';
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
+            }
+            
+            // Astral Ai chats Send
+            if (e.target.id === 'astralAiSend') {
+                const input = document.getElementById('astralAiInput');
+                const chatBox = document.getElementById('astralAiChat');
+                if (input.value.trim() !== '') {
+                    const userMsg = document.createElement('div');
+                    userMsg.className = 'chat-message user';
+                    userMsg.innerHTML = `<div class="chat-name">${loggedInUsername}</div><div class="chat-bubble">${input.value}</div>`;
+                    chatBox.appendChild(userMsg);
+                    
+                    setTimeout(() => {
+                        const aiMsg = document.createElement('div');
+                        aiMsg.className = 'chat-message ai';
+                        aiMsg.innerHTML = `<div class="chat-name">Astral AI</div><div class="chat-bubble">Sedang di perbaiki</div>`;
+                        chatBox.appendChild(aiMsg);
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    }, 800);
+                    
+                    input.value = '';
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
+            }
+            
+            // Ai-generateApp Send
+            if (e.target.id === 'aiGenSend') {
+                const input = document.getElementById('aiGenInput');
+                const chatBox = document.getElementById('aiGenChat');
+                if (input.value.trim() !== '') {
+                    const userMsg = document.createElement('div');
+                    userMsg.className = 'chat-message user';
+                    userMsg.innerHTML = `<div class="chat-name">${loggedInUsername}</div><div class="chat-bubble">${input.value}</div>`;
+                    chatBox.appendChild(userMsg);
+                    
+                    setTimeout(() => {
+                        const aiMsg = document.createElement('div');
+                        aiMsg.className = 'chat-message ai';
+                        aiMsg.innerHTML = `<div class="chat-name">App Generator</div><div class="chat-bubble">Sedang di perbaiki</div>`;
+                        chatBox.appendChild(aiMsg);
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    }, 800);
+                    
+                    input.value = '';
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
+            }
+            
+            // Ddos Launch
+            if (e.target.id === 'ddosLaunch') {
+                const target = document.getElementById('ddosTarget').value;
+                const port = document.getElementById('ddosPort').value;
+                const type = document.getElementById('ddosType').value;
+                
+                if (!target || !port) {
+                    alert('Isi target dan port dulu bang!');
+                    return;
+                }
+                
+                const btn = document.getElementById('ddosLaunch');
+                btn.disabled = true;
+                let countdown = 50;
+                const cooldownEl = document.getElementById('ddosCooldown');
+                
+                const interval = setInterval(() => {
+                    cooldownEl.textContent = `Cooldown: ${countdown} detik`;
+                    countdown--;
+                    if (countdown < 0) {
+                        clearInterval(interval);
+                        btn.disabled = false;
+                        cooldownEl.textContent = '';
+                    }
+                }, 1000);
+                
+                alert(`Succes Send Attack ke ${target}:${port} dengan tipe ${type}`);
+            }
+            
+            // Subdomain Find
+            if (e.target.id === 'subdomainFind') {
+                const domain = document.getElementById('subdomainDomain').value;
+                if (!domain) {
+                    alert('Masukkan domain dulu bang');
+                    return;
+                }
+                
+                const subdomains = ['www', 'mail', 'ftp', 'admin', 'blog', 'shop', 'api', 'dev', 'test', 'staging', 'vpn', 'secure'];
+                const randomSubs = [];
+                for (let i = 0; i < 5; i++) {
+                    const randomIndex = Math.floor(Math.random() * subdomains.length);
+                    randomSubs.push(subdomains[randomIndex] + '.' + domain.replace(/^https?:\/\//, ''));
+                }
+                const onionDomain = domain.replace(/^https?:\/\//, '').split('.')[0] + '.onion';
+                
+                const resultDiv = document.getElementById('subdomainResult');
+                resultDiv.style.display = 'block';
+                resultDiv.textContent = `Hasil:\n${randomSubs.join('\n')}\n${onionDomain}`;
+            }
+            
+            // Bug Send
+            if (e.target.id === 'bugSend') {
+                const target = document.getElementById('bugTarget').value;
+                const type = document.getElementById('bugType').value;
+                if (!target) {
+                    alert('Isi target dulu bang');
+                    return;
+                }
+                alert(`Succes Sending Bug to ${target} Typebug: ${type}`);
+            }
+            
+            // Unband Gas
+            if (e.target.id === 'unbandGas') {
+                const number = document.getElementById('unbandNumber').value;
+                const type = document.getElementById('unbandType').value;
+                if (!number) {
+                    alert('Isi number dulu bang');
+                    return;
+                }
+                alert('Succes To unband please wait 24 hours');
+            }
+            
+            // Testing Function Try button
+            if (e.target.id === 'functionTryBtn') {
+                const functionCode = document.getElementById('functionCode').value;
+                const loopCount = document.getElementById('functionLoop').value;
+                
+                if (!functionCode) {
+                    alert('Isi function dulu bang!');
+                    return;
+                }
+                
+                alert(`Succes Trying function dengan ${loopCount} loop`);
+            }
         });
 
-        // Fungsi learning
+        // ==================== FUNGSI LEARNING ====================
         function showLearningDetail(lang) {
             const detailDiv = document.getElementById('learningDetail');
             const contents = {
@@ -1743,22 +2776,22 @@
             detailDiv.innerHTML = contents[lang] || '<p>coming soon</p>';
         }
 
-        // Fungsi game engine
+        // ==================== FUNGSI GAME ENGINE ====================
         function showGameEngineDetail(engine) {
             const detailDiv = document.getElementById('gameEngineDetail');
             if (engine === 'unity') {
                 detailDiv.innerHTML = `
                     <h3>unity3d</h3>
                     <p>( 👋 ) Holaa brother ni source code free buat game lu mana tau berguna 🗿</p>
-                    <div class="list-item"><h4>AgeVerification</h4><p>script verifikasi umur</p><a href="https://www.mediafire.com/file/nfqueedd09k0dm2/Faceverification.txt/file" target="_blank"><button class="download-btn">Here</button></a></div>
-                    <div class="list-item"><h4>Dashboard Ai Select</h4><p>pilihan ai buat karakter</p><a href="https://www.mediafire.com/file/qh3xkndu3m0y755/Selection+Ai.txt/file" target="_blank"><button class="download-btn">Here</button></a></div>
+                    <div class="list-item"><h4>AgeVerification</h4><p>script verifikasi umur</p><a href="https://www.mediafire.com/file/nfqueedd09k0dm2/Faceverification.txt/file" target="_blank"><button class="login-btn">Here</button></a></div>
+                    <div class="list-item"><h4>Dashboard Ai Select</h4><p>pilihan ai buat karakter</p><a href="https://www.mediafire.com/file/qh3xkndu3m0y755/Selection+Ai.txt/file" target="_blank"><button class="login-btn">Here</button></a></div>
                 `;
             } else {
                 detailDiv.innerHTML = `<h3>unreal engine</h3><p>( 🔥 ) coming soon</p>`;
             }
         }
 
-        // Fungsi TikTok downloader
+        // ==================== FUNGSI TIKTOK DOWNLOADER ====================
         function showTiktokDownloader() {
             document.getElementById('downloaderDetail').innerHTML = `
                 <div class="content-card">
@@ -1772,7 +2805,6 @@
             `;
         }
 
-        // Fungsi download video TikTok pake API publik
         async function downloadTiktokVideo() {
             const link = document.getElementById('tiktokLink').value;
             if (!link) {
@@ -1781,7 +2813,6 @@
             }
 
             try {
-                // Pake API publik dari https://tikdown.org/api
                 const apiUrl = `https://api.tikdown.org/api?url=${encodeURIComponent(link)}`;
                 const response = await fetch(apiUrl);
                 const data = await response.json();
@@ -1806,7 +2837,7 @@
             }
         }
 
-        // Fungsi redeem code
+        // ==================== FUNGSI REDEEM CODE ====================
         function redeemCode() {
             const codeInput = document.getElementById('redeemCodeInput').value.trim().toUpperCase();
             if (!codeInput) {
@@ -1846,7 +2877,72 @@ Diskon: ${codeData.diskon}%`;
             alert('diskon sudah aktif untuk semua produk!');
         }
 
-        // Fungsi set redeem code (developer)
+        // ==================== FUNGSI REDEEM ACCES ====================
+        function redeemAcces() {
+            const codeInput = document.getElementById('redeemAccesCode').value.trim().toUpperCase();
+            if (!codeInput) {
+                alert('masukin code dulu bang');
+                return;
+            }
+
+            let redeemAccesList = JSON.parse(localStorage.getItem('redeemAccesList') || '[]');
+            let usedAccesCodes = JSON.parse(localStorage.getItem('usedAccesCodes') || '[]');
+            
+            const codeData = redeemAccesList.find(c => c.code === codeInput);
+
+            if (!codeData) {
+                alert(`code ${codeInput} tidak valid`);
+                return;
+            }
+
+            if (usedAccesCodes.includes(codeInput)) {
+                alert(`CODE ${codeInput} udh pernah di pake bang`);
+                return;
+            }
+
+            usedAccesCodes.push(codeInput);
+            localStorage.setItem('usedAccesCodes', JSON.stringify(usedAccesCodes));
+
+            const redeemData = {
+                code: codeInput,
+                title: codeData.title,
+                expired: Date.now() + (codeData.expired * 24 * 60 * 60 * 1000)
+            };
+            localStorage.setItem(`redeem_${loggedInUsername}`, JSON.stringify(redeemData));
+
+            const expiredDate = new Date(redeemData.expired).toLocaleDateString('id-ID');
+            document.getElementById('redeemAccesContent').textContent = `Succes
+Code: ${codeInput}
+Title: ${codeData.title}
+Expired: ${codeData.expired} hari (sampai ${expiredDate})`;
+            document.getElementById('redeemAccesModal').classList.add('active');
+            
+            checkRedeemAcces();
+        }
+
+        // ==================== FUNGSI GENERATE ACCES (DEVELOPER) ====================
+        function generateAcces() {
+            const code = document.getElementById('generateAccesCode').value.trim().toUpperCase();
+            const title = document.getElementById('generateAccesTitle').value.trim();
+            const expired = parseInt(document.getElementById('generateAccesExpired').value);
+
+            if (!code || !title || isNaN(expired) || expired <= 0) {
+                alert('isi data dengan benar');
+                return;
+            }
+
+            let redeemAccesList = JSON.parse(localStorage.getItem('redeemAccesList') || '[]');
+            redeemAccesList = redeemAccesList.filter(c => c.code !== code);
+            redeemAccesList.push({ code, title, expired });
+            localStorage.setItem('redeemAccesList', JSON.stringify(redeemAccesList));
+            
+            alert(`code ${code} berhasil disimpan dengan title "${title}" expired ${expired} hari`);
+            
+            document.getElementById('generateAccesCode').value = '';
+            document.getElementById('generateAccesTitle').value = '';
+        }
+
+        // ==================== FUNGSI SET REDEEM CODE ====================
         function setRedeemCode() {
             const code = document.getElementById('devCodeInput').value.trim().toUpperCase();
             const diskon = parseInt(document.getElementById('devDiskonInput').value);
@@ -1864,12 +2960,160 @@ Diskon: ${codeData.diskon}%`;
             alert(`code ${code} berhasil disimpan dengan diskon ${diskon}% selama ${expired} hari`);
         }
 
-        // Inisialisasi dashboard
+        // ==================== FUNGSI CEK BAN ====================
+        function cekBan() {
+            const id = document.getElementById('cekBanId').value.trim();
+            const server = document.getElementById('cekBanServer').value.trim();
+            
+            if (!id || !server) {
+                alert('Isi ID dan Server dulu bang');
+                return;
+            }
+            
+            const spinner = document.getElementById('cekBanSpinner');
+            const resultDiv = document.getElementById('cekBanResult');
+            
+            spinner.style.display = 'block';
+            resultDiv.style.display = 'none';
+            
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                
+                const statusBanned = Math.random() > 0.5 ? 'BANNED' : 'FALSE';
+                const result = `===============
+Cek Banned Succes
+===============
+ID: ${id}
+SERVER: ${server}
+StatusBanned: ${statusBanned}
+======================
+irfan cekBan - 2026`;
+                
+                resultDiv.textContent = result;
+                resultDiv.style.display = 'block';
+            }, 3000);
+        }
+
+        // ==================== FUNGSI CEK BIND ====================
+        function cekBind() {
+            const id = document.getElementById('cekBindId').value.trim();
+            const server = document.getElementById('cekBindServer').value.trim();
+            
+            if (!id || !server) {
+                alert('Isi ID dan Server dulu bang');
+                return;
+            }
+            
+            const spinner = document.getElementById('cekBindSpinner');
+            const resultDiv = document.getElementById('cekBindResult');
+            
+            spinner.style.display = 'block';
+            resultDiv.style.display = 'none';
+            
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                
+                const year = Math.floor(Math.random() * (2023 - 2015) + 2015);
+                const month = Math.floor(Math.random() * 12) + 1;
+                const day = Math.floor(Math.random() * 28) + 1;
+                const creationDate = `${year}-${month}-${day}`;
+                
+                const emailChars = 'abcdefghijklmnopqrstuvwxyz';
+                const emailLength = Math.floor(Math.random() * 5) + 5;
+                let emailName = '';
+                for (let i = 0; i < emailLength; i++) {
+                    emailName += emailChars[Math.floor(Math.random() * emailChars.length)];
+                }
+                const emailDomain = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com'][Math.floor(Math.random() * 4)];
+                const email = `${emailName}@${emailDomain}`;
+                const censoredEmail = emailName.substring(0, 3) + '***@' + emailDomain;
+                
+                const montoon = censoredEmail;
+                const google = Math.random() > 0.5 ? 'Connected' : 'NotConnected';
+                const facebook = Math.random() > 0.5 ? 'Connected' : 'NotConnected';
+                const twitter = Math.random() > 0.5 ? 'Connected' : 'NotConnected';
+                const vk = Math.random() > 0.5 ? 'Connected' : 'NotConnected';
+                const apple = Math.random() > 0.5 ? 'Connected' : 'NotConnected';
+                
+                const androidDevices = Math.floor(Math.random() * 50) + 1;
+                const appleDevices = Math.floor(Math.random() * 50) + 1;
+                
+                const result = `============
+Cek Bind Succes
+============
+ID: ${id}
+SERVER: ${server}
+Creation date: ${creationDate}
+
+Bind info:
+Montoon: ${montoon}
+Google: ${google}
+Facebook: ${facebook}
+Twitter: ${twitter}
+Vk: ${vk}
+Apple: ${apple}
+
+Android: ${androidDevices} device
+Apple: ${appleDevices} device`;
+                
+                resultDiv.textContent = result;
+                resultDiv.style.display = 'block';
+            }, 3000);
+        }
+
+        // ==================== FUNGSI CEK BUKTOP ====================
+        function cekBuktop() {
+            const id = document.getElementById('cekBuktopId').value.trim();
+            const server = document.getElementById('cekBuktopServer').value.trim();
+            
+            if (!id || !server) {
+                alert('Isi ID dan Server dulu bang');
+                return;
+            }
+            
+            const spinner = document.getElementById('cekBuktopSpinner');
+            const resultDiv = document.getElementById('cekBuktopResult');
+            
+            spinner.style.display = 'block';
+            resultDiv.style.display = 'none';
+            
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                
+                const diamondItems = ['75 + 5 diamonds', '85 + 8 diamonds', '100 + 10 diamonds', '150 + 15 diamonds', '200 + 20 diamonds', '300 + 30 diamonds', '500 + 50 diamonds'];
+                const pembelian = diamondItems[Math.floor(Math.random() * diamondItems.length)];
+                
+                const payments = ['dana', 'ovo', 'gopay', 'link aja', 'shoppie', 'paypal', 'qris', 'bank bca', 'bank mandiri', 'bank bri', 'bank bni'];
+                const payment = payments[Math.floor(Math.random() * payments.length)];
+                
+                let region = 'Indonesia';
+                if (payment === 'paypal') {
+                    const countries = ['German', 'USA', 'UK', 'Singapore', 'Malaysia', 'Japan', 'South Korea', 'Australia', 'France', 'Netherlands'];
+                    region = countries[Math.floor(Math.random() * countries.length)] + ' ( paypal )';
+                }
+                
+                const result = `==============
+Cek buktop berhasil
+==============
+Pembelian: ${pembelian}
+PaymentUse: ${payment}
+Region: ${region}
+======================`;
+                
+                resultDiv.textContent = result;
+                resultDiv.style.display = 'block';
+            }, 3000);
+        }
+
+        // ==================== INISIALISASI DASHBOARD ====================
         function initDashboard() {
             sidebarToggleX.addEventListener('click', () => {
                 if (sidebar.classList.contains('collapsed')) {
                     sidebar.classList.remove('collapsed');
                     sidebarOverlay.classList.add('active');
+                } else {
+                    sidebar.classList.add('collapsed');
+                    sidebarOverlay.classList.remove('active');
                 }
             });
             
@@ -1880,6 +3124,12 @@ Diskon: ${codeData.diskon}%`;
             
             sidebarLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
+                    if (link.classList.contains('locked')) {
+                        e.preventDefault();
+                        alert('Kamu belum redeem acces untuk membuka fitur ini!');
+                        return;
+                    }
+                    
                     e.preventDefault();
                     sidebarLinks.forEach(item => item.classList.remove('active'));
                     link.classList.add('active');
@@ -1896,15 +3146,23 @@ Diskon: ${codeData.diskon}%`;
                 });
             });
 
-            // Animasi skill bar
             document.querySelectorAll('.skill-progress').forEach(bar => {
                 const width = bar.style.width;
                 bar.style.width = '0%';
                 setTimeout(() => bar.style.width = width, 300);
             });
+            
+            // Event listener untuk WA Channel type
+            const waType = document.getElementById('waChannelType');
+            if (waType) {
+                waType.addEventListener('change', function() {
+                    document.getElementById('slowPrice').style.display = this.value === 'slow' ? 'block' : 'none';
+                    document.getElementById('fastPrice').style.display = this.value === 'fast' ? 'block' : 'none';
+                });
+            }
         }
 
-        // Logs generator
+        // ==================== LOGS GENERATOR ====================
         let logInterval;
         function startLogsGenerator() {
             const logsContainer = document.getElementById('logsContainer');
@@ -1930,6 +3188,7 @@ Diskon: ${codeData.diskon}%`;
             }, 1000);
         }
 
+        // ==================== NOTIFICATION ====================
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.style.cssText = `
@@ -1942,7 +3201,7 @@ Diskon: ${codeData.diskon}%`;
             setTimeout(() => notification.remove(), 3000);
         }
 
-        // Style untuk animasi
+        // ==================== STYLE ANIMASI ====================
         const style = document.createElement('style');
         style.textContent = `
             @keyframes shake { 0%,100%{transform:translateX(0)} 10%,30%,50%,70%,90%{transform:translateX(-5px)} 20%,40%,60%,80%{transform:translateX(5px)} }
@@ -1953,4 +3212,4 @@ Diskon: ${codeData.diskon}%`;
         document.head.appendChild(style);
     </script>
 </body>
-    </html>
+</html>
